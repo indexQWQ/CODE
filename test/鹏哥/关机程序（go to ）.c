@@ -4,7 +4,8 @@
 int main ()
 {
     char arr[11]={0};
-    //system("shutdown -s -t 60");
+    //system("shutdown -s -t 60");//关机
+    //system("shutdown -a");//取消关机
 again:
     printf("关机倒计时60秒,如果叫爸爸就取消关机\n请叫:");
     scanf("%s",arr);

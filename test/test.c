@@ -123,9 +123,16 @@
 // }
 
 #include <stdio.h>
-extern int agg;
-int main() 
+
+int main()
 {
-	printf("%d\n",agg);
+	int arr[10]={0};
+	int i=0;
+	while(scanf("%d",&arr[i])!=EOF)
+	{
+		i++;
+	}
+	int si = sizeof(arr)/sizeof(arr[0]);
+	printf("数组的长度为：%d\n",si);
 	return 0;
 }
