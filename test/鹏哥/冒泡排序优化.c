@@ -1,7 +1,7 @@
 #include <stdio.h>
 int main() 
 {
-    int a[10]= {5,3,8,6,2,7,1,4,9,0};
+    int a[10]= {5,3,6,8,2,7,1,4,9,0};
     int se=sizeof(a)/sizeof(a[0]);
     for(int i=0;i<se-1;i++)
     {

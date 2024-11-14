@@ -1,10 +1,14 @@
 #include <stdio.h>
 
-void swap(int *a,int *b)
+void swap(int *x,int *y)
 {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
+    int temp = *x;
+    *x = *y;
+    *y = temp;
+    // int temp1 = x;
+    // x = y;
+    // y = temp1;//这样子x和y的值就交换了，但交换的的值是地址，而不是值。
+    //printf("x= %d, y= %d\n",*x,*y);
 }
 
 int main()
@@ -12,7 +16,7 @@ int main()
     int a = 1;
     int b = 2;
     swap(&a,&b);
-    printf("%d %d",a,b);
+    printf("a= %d, b= %d\n",a,b);
     return 0;
 }
 
