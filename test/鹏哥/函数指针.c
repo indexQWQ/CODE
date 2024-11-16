@@ -1,7 +1,7 @@
 #include <stdio.h>
 void arr(int* p)
 {
-    (*p)++;
+    (*p)++;//要使用函数指针，必须用(*p)++这种形式调用
 }
 int main ()
 {
