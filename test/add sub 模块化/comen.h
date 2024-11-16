@@ -1,3 +1,5 @@
+#pragma once//防止重复包含
+
 #ifndef COMEN_H
 #define COMEN_H
 
