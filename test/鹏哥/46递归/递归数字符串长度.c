@@ -4,17 +4,17 @@
 
 int my_strlen(char *str)
 {
-    int count =0;
-    while(*str!='\0')
+    if(*str=='\0')//限制条件，字符串末尾的'\0'
     {
-        count++;
-        str++;
+        return 0;
     }
-    return count;
+    return 1+my_strlen(str+1);//接近限制条件
+    //++str会改变arr[]字符串//尾递归优化
 }
 int main()
 {
     char arr[]="abcd";
+    
     int len=my_strlen(arr);
     printf("%d",len);
     return 0;
@@ -22,13 +22,14 @@ int main()
 //下面的是使用while循环计算的
 // #include <stdio.h>
 
-// int my_strlen(char *str)//chan
+////int my_strlen(char *str[])//参数部分写成数组的形式
+// int my_strlen(char *str)//参数部分写成指针的形式
 // {
-//     int count =0;
+//     int count =0;//创建临时变量count
 //     while(*str!='\0')
 //     {
 //         count++;
-//         str++;
+//         str++;//找下一个字符
 //     }
 //     return count;
 // }
