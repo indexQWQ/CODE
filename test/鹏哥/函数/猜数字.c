@@ -71,7 +71,7 @@
 
 
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h>//包含标准输入输出函数库 
 #include <time.h>
 
 void menu()
