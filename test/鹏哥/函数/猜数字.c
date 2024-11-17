@@ -136,6 +136,7 @@ void game()
 int main()
 {
     srand((unsigned int)time(NULL));//不是每次start都要重新生成随机数种子，而是只在第一次生成随机数种子
+    //生成随机数的起点
     int choice=0;
     do
     {
