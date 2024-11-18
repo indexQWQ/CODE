@@ -1,26 +1,35 @@
 #include <stdio.h>
-int main ()
+#include <string.h>
+
+int main()
 {
-    int a,count=0;
-    scanf("%d", &a);
-    //char flag[50];
-    for(int i=1;i<=a;i++)
+    char arr[100];
+    int count=0;
+    while(EOF!=scanf("%c",&arr[count]))
     {
-        int j;
-        for( j=2;j<=i;j++)
-        {
-            if(i%j==0)
-            {
-                break;
-            }
-        }
-        if(j==i)
-        {
-            printf("%d",i);
-            count++;
-        }
-        printf("\n");
+        count++;
     }
-    //printf("%d",flag[count]);
+    int i=0;
+    int count1=0;
+    for(i=0;i<count-count1-1;i++)
+    {
+        if(arr[i]>'0' && arr[i]<'9')
+        {
+            if(i<count-count1-2)
+            {
+                int j=0;
+                for(j=i;j<count-2;j++)
+                {
+                    arr[j]=arr[j+1];
+                }
+                i-=1;
+            }
+            count1++;
+        }
+    }
+    for(i=0;i<count-count1-1;i++)
+    {
+        printf("%c",arr[i]);
+    }
     return 0;
 }

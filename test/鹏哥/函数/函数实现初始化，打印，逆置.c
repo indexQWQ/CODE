@@ -19,13 +19,24 @@ void print(int arr[],int ze)
     printf("\n");
 }
 
-void reverse(int arr[],int left,int right)
+// void reverse(int arr[],int left,int right)
+// {
+//     int temp=arr[left];
+//     arr[left]=arr[right];
+//     arr[right]=temp;
+//     if(left<right)
+//         reverse(arr,left+1,right-1);
+// }
+
+void reverse(int *arr,int left,int right)
 {
-    int temp=arr[left];
-    arr[left]=arr[right];
-    arr[right]=temp;
+        
     if(left<right)
+    {   int temp=*(arr+left);
+        *(arr+left)=*(arr+right);
+        *(arr+right)=temp;
         reverse(arr,left+1,right-1);
+    }
 }
 int main()
 {
