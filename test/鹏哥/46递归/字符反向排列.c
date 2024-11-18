@@ -1,22 +1,23 @@
 // 递归
 
+
 #include <stdio.h>
 #include <string.h>
-void asd(char *arr)
+void asd(char arr[],int left,int right)
 {
-    char temp=*arr;
-    int len=strlen(arr);
-    *arr=*(arr+len-1);
-    *(arr+len-1)='\0';
-    if(strlen(arr+1)>1)
-        asd(arr+1);
-    *(arr+len-1)=temp;
+    char temp=arr[left];
+    arr[left]=arr[right];
+    arr[right]=temp;
+    if(left+1<right-1)
+        asd(arr,left+1,right-1);
 }
 int main()
 {
     char arr[]="abcdef";
     int len=strlen(arr);
-    asd(arr);
+    int left=0;
+    int right=len-1;
+    asd(arr,left,right);
     int i=0;
     for(i=0;i<len;i++)
     {
@@ -24,6 +25,33 @@ int main()
     }
     return 0;
 }
+
+
+
+// #include <stdio.h>
+// #include <string.h>
+// void asd(char *arr)//使用指针
+// {
+//     char temp=*arr;
+//     int len=strlen(arr);
+//     *arr=*(arr+len-1);
+//     *(arr+len-1)='\0';
+//     if(strlen(arr+1)>1)
+//         asd(arr+1);
+//     *(arr+len-1)=temp;
+// }
+// int main()
+// {
+//     char arr[]="abcdef";
+//     int len=strlen(arr);
+//     asd(arr);
+//     int i=0;
+//     for(i=0;i<len;i++)
+//     {
+//         printf("%c",arr[i]);
+//     }
+//     return 0;
+// }
 
 
 // #include <stdio.h>
