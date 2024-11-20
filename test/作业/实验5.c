@@ -384,3 +384,43 @@
 //     print(arr,n,n);
 //     return 0;
 // }
+
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	char arr[100][100];
+	char arr1[100];
+    int count[100]={0};
+    int initcount=0;
+	int i=0;
+	while(scanf("%s",arr1) && strcmp(arr1,"$$$")!=0)
+	{
+        int flag=0;
+        int j=0;
+        for(j=0;j<=initcount;j++)
+        {
+            if(strcmp(arr[j],arr1)==0)
+            {
+                flag=1;
+                count[j]++;
+                break;
+            }
+        }
+        if(flag==0)
+        {
+            strcpy(arr[initcount],arr1);
+            count[initcount]++;
+            initcount++;
+        }
+		i++;
+	}
+    int j=0;
+    for(j=0;j<initcount;j++)
+    {
+        printf("%s:%d",arr[j],count[j]);
+        printf("\n");
+    }
+    printf("\n");
+	return 0;
+}
