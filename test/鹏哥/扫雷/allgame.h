@@ -6,8 +6,9 @@
 #define ROWS ROW+2
 #define COLS COL+2
 
-#define BOMB 10
+#define BOMB 1
 #include"game1.c"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <windows.h>

@@ -103,34 +103,126 @@ int isfull(char board[ROW][COL],int row,int col)
     }
     return 1;
 }
+//判断输赢
 char iswin(char board[ROW][COL],int row,int col)
 {
     //行
+    //第一代
+    // int i=0;
+    // for(i=0;i<row;i++)
+    // {
+    //     if(board[i][0]==board[i][1] &&board[i][1]==board[i][2] && board[i][0]!=' ')
+    //     {
+    //         return board[i][0];
+    //     }
+    // }
+
     int i=0;
     for(i=0;i<row;i++)
     {
-        if(board[i][0]==board[i][1] &&board[i][1]==board[i][2] && board[i][0]!=' ')
+        int flag=0;
+        char refer=board[i][0];
+        int j=0;
+        for(j=1;j<col;j++)
         {
-            return board[i][0];
+            if(refer != board[i][j])
+            {
+                flag=0;//不加不行
+                break;
+            }
+            else
+            {
+                flag=1;
+            }
+        }
+        if(flag && refer!=' ')
+        {
+            return refer;
         }
     }
     //列
+    //第一代
+    // int j=0;
+    // for(j=0;j<col;j++)
+    // {
+    //     if(board[0][j]==board[1][j] && board[1][j]==board[2][j] && board[0][j]!=' ')
+    //     {
+    //         return board[0][j];
+    //     }
+    // }
+
     int j=0;
     for(j=0;j<col;j++)
     {
-        if(board[0][j]==board[1][j] && board[1][j]==board[2][j] && board[0][j]!=' ')
+        int flag=0;
+        char refer=board[0][j];
+        int i=0;
+        for(i=1;i<row;i++)
         {
-            return board[0][j];
+            if(refer != board[i][j])
+            {
+                flag=0;//不加不行
+                break;
+            }
+            else
+            {
+                flag=1;
+            }
+        }
+        if(flag && refer!=' ')
+        {
+            return refer;
         }
     }
     //对角线
-    if(board[0][0]==board[1][1] && board[1][1]==board[2][2] && board[0][0]!=' ')
+    //第一代
+    // if(board[0][0]==board[1][1] && board[1][1]==board[2][2] && board[0][0]!=' ')
+    // {
+    //     return board[0][0];
+    // }
+    // if(board[0][2]==board[1][1] && board[1][1]==board[2][0] && board[0][2]!=' ')
+    // {
+    //     return board[0][2];
+    // }
+
+    //局限性：只能是等边的棋盘
+    int flag=0;
+    char refer=board[0][0];
+    for(i=1;i<row;i++)
     {
-        return board[0][0];
+        
+        if(refer != board[i][i])
+        {
+            flag=0;
+            break;
+        }
+        else
+        {
+            flag=1;
+        }
     }
-    if(board[0][2]==board[1][1] && board[1][1]==board[2][0] && board[0][2]!=' ')
+    if(flag && refer!=' ')
     {
-        return board[0][2];
+        return refer;
+    }
+
+    char refer1=board[0][col-1];
+    for(i=row-1;i>=0;i--)
+    {
+        
+        if(refer1 != board[i][-i+row-1])
+        {
+            flag=0;
+            break;
+        }
+        else
+        {
+            flag=1;
+        }
+    }
+    if(flag && refer1!=' ')
+    {
+        return refer1;
     }
     //没有人赢
     if(isfull(board,row,col))

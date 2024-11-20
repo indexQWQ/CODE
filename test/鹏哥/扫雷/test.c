@@ -18,7 +18,7 @@ void game()
     initboard(show,ROWS,COLS,'*');
     //设置雷
     setmine(mine,ROW,COL);
-    //displayboard(mine,ROW,COL);
+    displayboard(mine,ROW,COL);
     displayboard(show,ROW,COL);
     //排查雷
     findmine(mine,show,ROW,COL);
@@ -48,3 +48,8 @@ int main()
     
     return 0;
 }
+
+//基础的功能扩展
+//1.当排查x y时，展开一片
+//（1）.该坐标不是雷（2）.该坐标周围没有雷（3）.该坐标没有被排查过
+//2.标记的功能
