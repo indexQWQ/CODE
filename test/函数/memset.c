@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 
-void *memset(void *s, int c, size_t n)
-{
-    unsigned char *p = (unsigned char *)s;//将s转换为unsigned char指针
-    while (n--)//循环n次
-        *p++ = (unsigned char)c;//将p指向的内存块中的字节设置为c
-    return s;
-}
+// void *memset(void *s, int c, size_t n)
+// {
+//     unsigned char *p = (unsigned char *)s;//将s转换为unsigned char指针
+//     while (n--)//循环n次
+//         *p++ = (unsigned char)c;//将p指向的内存块中的字节设置为c
+//     return s;
+// }
 
 int main()
 {
