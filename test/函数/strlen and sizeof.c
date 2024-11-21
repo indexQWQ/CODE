@@ -10,9 +10,19 @@
 //
 int main()
 {
-    char str[] = "Hello,world!";
+    char str[] ="Hello,world";
+    char str1[100];
     int len = strlen(str);//strlen函数返回字符串的长度遇到空字符时停止
     printf("The length of the string is %d\n", len);
-    printf("The size of the string is %d\n", sizeof(str));//sizeof函数返回字符串的字节数
+    int len1= sizeof(str);
+    printf("The size of the string is %d\n", len1);//sizeof函数返回字符串的字节数
+    fgets(str1,sizeof(str1),stdin);
+    int len2=strlen(str1);
+    printf("%d",len2);
     return 0;
-}   
+}  
+//结果
+// The length of the string is 11
+// The size of the string is 12
+// hello world
+// 12

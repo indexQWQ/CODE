@@ -3,6 +3,33 @@
 
 // int main()
 // {
+//     char arr[100]={0};
+//     scanf("%s",arr);
+//     int len=strlen(arr);
+//     int i=0;
+//     for(i=0;i<len;i++)
+//     {
+//         if(arr[i]>='0' && arr[i]<='9')
+//         {
+//             int j=0;
+//             for(j=i;j<len;j++)
+//             {
+//                 arr[j]=arr[j+1];
+//             }
+//             i--;
+//             len--;
+//         }
+//     }
+//     printf("%s",arr);
+//     //printf("%d",len);
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main()
+// {
 //     char arr[100];
 //     int count=0;
 //     while(EOF!=scanf("%c",&arr[count]))

@@ -128,7 +128,8 @@
 #include <stdbool.h>
 #include <math.h>
 
-int main() {
+int main() 
+{
     long long m;
     scanf("%lld", &m);
 
