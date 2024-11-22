@@ -83,6 +83,6 @@ int main()
                 break;
         }
         break;
-    }while(1);
+    }while(input);
     return 0;
 }
