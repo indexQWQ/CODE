@@ -1,68 +1,47 @@
 #include <stdio.h>
- 
-// 范围结构体
-typedef struct _Range {
-    int start, end;
-} Range;
- 
-// 创建新的范围
-Range new_Range(int s, int e) {
-    Range r;
-    r.start = s;
-    r.end = e;
-    return r;
-}
- 
-// 交换两个整数
-void swap(int *x, int *y) {
-    int t = *x;
-    *x = *y;
-    *y = t;
-}
- 
-// 快速排序函数
-void quick_sort(int arr[], const int len) {
-    if (len <= 0)
-        return; // 避免 len 等于负值时引发段错误（Segment Fault）
- 
-    Range r[len];
-    int p = 0;
-    r[p++] = new_Range(0, len - 1);
- 
-    while (p > 0) {
-        Range range = r[--p];
-        if (range.start >= range.end)
-            continue;
- 
-        int mid = arr[(range.start + range.end) / 2]; // 选取中间点为基准点
-        int left = range.start, right = range.end;
- 
-        do {
-            while (arr[left] < mid) ++left;   // 检测基准点左侧是否符合要求
-            while (arr[right] > mid) --right; // 检测基准点右侧是否符合要求
- 
-            if (left <= right) {
-                swap(&arr[left], &arr[right]);
-                left++;
-                right--; // 移动指针以继续
+
+/********************
+ * 函数名: quicksort
+ * 功能: 实现快速排序算法，对给定数组进行排序
+ * 参数: 
+ *      arr[] - 需要排序的数组
+ *      low - 当前排序的起始索引
+ *      high - 当前排序的结束索引
+ ********************/
+void quicksort(int arr[], int low, int high) 
+{
+   if(low<high)
+   {
+        int pivot=arr[high];
+        int i=low-1;
+        int j=0;
+        for(j=low;j<high;j++)
+        {
+            if(arr[j]<pivot)
+            {
+                i++;
+                int temp=arr[j];
+                arr[j]=arr[i];
+                arr[i]=temp;
             }
-        } while (left <= right);
- 
-        if (range.start < right) r[p++] = new_Range(range.start, right);
-        if (range.end > left) r[p++] = new_Range(left, range.end);
-    }
+        }
+        int temp=arr[i+1];
+        arr[i+1]=arr[high];
+        arr[high]=temp;
+
+        int ip=i+1;
+        quicksort(arr,ip+1,high);
+        quicksort(arr,low,ip-1);
+   }
 }
- 
-int main() {
-    int arr[] = {22, 34, 3, 32, 82, 55, 89, 50, 37, 5, 64, 35, 9, 70};
-    int len = sizeof(arr) / sizeof(arr[0]); // 计算数组长度
- 
-    quick_sort(arr, len); // 调用快速排序函数
- 
-    // 打印排序后的数组
-    for (int i = 0; i < len; i++) {
-        printf("%d ", arr[i]);
+int main()
+{
+    int arr[10]={2,1,3,4,7,6,8,9,5};
+    quicksort(arr,0,9);
+    int i=0;
+    for(i=0;i<10;i++)
+    {
+        printf("%d ",arr[i]);
     }
- 
     return 0;
 }
