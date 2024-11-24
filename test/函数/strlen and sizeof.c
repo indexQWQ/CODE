@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 //sizeof
-//是一个操作符，用来计算变量(类型)所占空间的大小，不关注内存中存放的内容
+//是一个操作符，用来计算变量(类型)所占空间的大小，不关注内存中存放的内容返回的是unsigned int 用%zu
 //单位字节
 //
 //strlen

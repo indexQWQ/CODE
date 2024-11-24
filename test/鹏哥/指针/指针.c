@@ -48,15 +48,21 @@
 //     return 0;
 // }
 
-int *test()
-{
-    int a=10;
-    return &a;
-}
+// int *test()
+// {
+//     int a=10;
+//     return &a;
+// }
+// int main()
+// {
+//     int *p=test();
+//     *p=20;
+//     printf("%d\n",*p);
+//     return 0;
+// }
+
 int main()
 {
-    int *p=test();
-    *p=20;
-    printf("%d\n",*p);
+    
     return 0;
 }

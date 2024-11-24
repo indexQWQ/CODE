@@ -134,4 +134,5 @@
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,
+"cmake.sourceDirectory": "C:/Users/Lenovo/OneDrive/桌面/CODE1/test/hello 算法c",
 }
