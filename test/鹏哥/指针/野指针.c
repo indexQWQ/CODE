@@ -6,14 +6,14 @@
 // 2. 指针越界访问
 // 3. 指针指向的空间释放
 
-int *test()
-{
-    int a=10;
-    return &a;
-}
-int main()
-{
-    int *p=test();
-    printf("%d\n",*p);
-    return 0;
-}
+// int *test()
+// {
+//     int a=10;
+//     return &a;
+// }
+// int main()
+// {
+//     int *p=test();
+//     printf("%d\n",*p);//原函数以被销毁，
+//     return 0;
+// }
