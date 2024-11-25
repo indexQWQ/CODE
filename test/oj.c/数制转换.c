@@ -9,10 +9,11 @@ int main()
     scanf("%d%s", &a, str);
     int b=strlen(str);
     int flag=0;
-    for(int i=0;i<b;i++)
+    int i=0;
+    for(i=0;i<b;i++)
     {
-        
-        for(int j=0;j<16;j++)
+        int j=0;
+        for(j=0;j<16;j++)
         {
             if(str[i]==arr[j])
             {
