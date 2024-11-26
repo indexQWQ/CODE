@@ -2,10 +2,11 @@
 
 int main()
 {
-    double h,n,s=0,h1;
-    scanf("%lf%lf",&h,&n);
+    double h,s=0,h1;
+    int n=0;
+    scanf("%lf%d",&h,&n);
     h1=h;
-    for(double i=0;i<n;i++)
+    for(int i=0;i<n;i++)
     {
         
         if(i==0)

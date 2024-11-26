@@ -45,41 +45,4 @@
 //     }
 //     return 0;
 // }
-void quicksort(int arr[],int low,int high)
-{
-    if(low<high)
-    {
-        int i=low-1;
-        int j=0;
-        int povit=arr[high];
-        for(j=low;j<high;j++)
-        {
-            if(arr[j]>povit)
-            {
-                i++;
-                int temp=arr[j];
-                arr[j]=arr[i];
-                arr[i]=temp;
-            }
-        }
-        int pi=i+1;
-        int temp=arr[high];
-        arr[high]=arr[pi];
-        arr[pi]=temp;
-        quicksort(arr,low,pi-1);
-        quicksort(arr,pi+1,high);
-    }
-}
-
-int main()
-{
-    int arr[10]={2,1,3,4,7,6,8,9,5};
-    quicksort(arr,0,9);
-    int i=0;
-    for(i=0;i<10;i++)
-    {
-        printf("%d ",arr[i]);
-    }
-    return 0;
-}
 
