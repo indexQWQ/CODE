@@ -14,6 +14,6 @@
 // int main()
 // {
 //     int *p=test();
-//     printf("%d\n",*p);//原函数以被销毁，
+//     printf("%d\n",*p);//原函数已被销毁，
 //     return 0;
 // }

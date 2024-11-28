@@ -56,7 +56,10 @@ int count_true_prime( long long begin, long long end )
     int count=0;
     long long i=0;
     long long arr[MAX]={0};
-    memset(arr,1,MAX*sizeof(int));//将数组初始化1
+    for(i=0;i<MAX;i++)
+    {
+        arr[i]=1;
+    }
     arr[1]=0,arr[0]=0;
     for(i=2;i<MAX;i++)
     {
@@ -86,6 +89,6 @@ int count_true_prime( long long begin, long long end )
 
 int main()
 {
-    int len=count_true_prime(10,100);
+    int len=count_true_prime(10,50000);
     printf("%d\n",len);
 }
