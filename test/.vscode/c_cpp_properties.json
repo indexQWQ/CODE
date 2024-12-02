@@ -3,7 +3,10 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "C:\\mingw64\\include",
+                "C:\\mingw64\\lib"
+                //"C:\\mingw64\\x86_64-w64-mingw32\\include"
             ],
             "defines": [
                 "_DEBUG",
@@ -15,7 +18,10 @@
             "cStandard": "c99",
             "cppStandard": "c++17",
             "intelliSenseMode": "gcc-x64",
-            "mergeConfigurations": false
+            "mergeConfigurations": false,
+            "compilerArgs": [
+                "-fexec-charset=GBK"
+            ]
         }
     ],
     "version": 4
