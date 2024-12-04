@@ -1,85 +1,29 @@
-{
-    // 使用 IntelliSense 了解相关属性。 
-    // 悬停以查看现有属性的描述。
-    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        
-        
-        {
-            "name": "(gdb) 启动",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${fileDirname}\\{fileDirname}\\a.exe",// 程序的路径
-            "args": [],
-            "stopAtEntry": false,// 是否在程序入口处停止
-            "cwd": "${fileDirname}",
-            "environment": [],
-            //"externalConsole": false,
-            "externalConsole": true,// 控制是否在控制台中运行程序
-            "MIMode": "gdb",
-            "miDebuggerPath": "C:\\mingw64\\bin\\gdb.exe",// 调试器的路径
-            "setupCommands": [
-                {
-                    "description": "为 gdb 启用整齐打印",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true// 忽略失败的命令
-                },
-                {
-                    "description": "将反汇编风格设置为 Intel",
-                    "text": "-gdb-set disassembly-flavor intel",
-                    "ignoreFailures": true// 忽略失败的命令
-                }
-            ]
-        }
-
-
-    ]
-}
-
 // {
+//     // 使用 IntelliSense 了解相关属性。 
+//     // 悬停以查看现有属性的描述。
+//     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
 //     "version": "0.2.0",
 //     "configurations": [
-    
+        
+        
 //         {
-//             "name": "(Windows) Launch",
-//             "type": "cppvsdbg",
-//             "request": "launch",
-//             "program": "cmd",
-//             "preLaunchTask": "echo",
-//             "args": [
-//                 "/C",
-//                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
-//                 "&",
-//                 "echo.",
-//                 "&",
-//                 "pause"
-//             ],
-//             "stopAtEntry": false,
-//             "cwd": "${workspaceFolder}",
-//             "environment": [],
-//             // 之前是 "externalConsole":true，该字段已弃用
-//             "externalConsole":true,
-//             "console":"externalTerminal"
-//         },
-//         {
-//             "name": "(gdb) Launch",
+//             "name": "(gdb) 启动",
 //             "type": "cppdbg",
 //             "request": "launch",
-//             "program": "${workspaceFolder}/${fileBasenameNoExtension}.exe",
+//             "program": "${fileDirname}\\{fileDirname}\\a.exe",// 程序的路径
 //             "args": [],
-//             "stopAtEntry": false,
-//             "cwd": "${workspaceFolder}",
+//             "stopAtEntry": false,// 是否在程序入口处停止
+//             "cwd": "${fileDirname}",
 //             "environment": [],
-//             "externalConsole": true,
+//             //"externalConsole": false,
+//             "externalConsole": true,// 控制是否在控制台中运行程序
 //             "MIMode": "gdb",
-//             "miDebuggerPath": "C:\\mingw64\\bin\\gdb.exe",// 自己电脑的gdb
-//             "preLaunchTask": "echo",//这里和task.json的label相对应
+//             "miDebuggerPath": "C:\\mingw64\\bin\\gdb.exe",// 调试器的路径
 //             "setupCommands": [
 //                 {
-//                     "description": "Enable pretty-printing for gdb",
+//                     "description": "为 gdb 启用整齐打印",
 //                     "text": "-enable-pretty-printing",
-//                     "ignoreFailures": true
+//                     "ignoreFailures": true// 忽略失败的命令
 //                 },
 //                 {
 //                     "description": "将反汇编风格设置为 Intel",
@@ -87,7 +31,63 @@
 //                     "ignoreFailures": true// 忽略失败的命令
 //                 }
 //             ]
-
 //         }
+
+
 //     ]
 // }
+
+{
+    "version": "0.2.0",
+    "configurations": [
+    
+        {
+            "name": "(Windows) Launch",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "cmd",
+            "preLaunchTask": "echo",
+            "args": [
+                "/C",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "&",
+                "echo.",
+                "&",
+                "pause"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            // 之前是 "externalConsole":true，该字段已弃用
+            "externalConsole":true,
+            "console":"externalTerminal"
+        },
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\mingw64\\bin\\gdb.exe",// 自己电脑的gdb
+            "preLaunchTask": "echo",//这里和task.json的label相对应
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "将反汇编风格设置为 Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true// 忽略失败的命令
+                }
+            ]
+
+        }
+    ]
+}
