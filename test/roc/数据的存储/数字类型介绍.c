@@ -72,15 +72,66 @@
 //1111 1100
 //1000 0011
 
-int main()
-{
-    char a=-128;
-    printf("%u\n",a);
-    printf("%d\n",a);// -128
-}
+// int main()
+// {
+//     char a=-128;
+//     printf("%u\n",a);
+//     printf("%d\n",a);// -128
+// }
 // -128
 // 1000 0000 0000 0000 0000 0000 1000 0000
 // 1111 1111 1111 1111 1111 1111 0111 1111
 // 1111 1111 1111 1111 1111 1111 1000 0000
 //char 截取1000 0000
 //%u 提升1000 0000 变为1111 1111 1111 1111 1111 1111 1000 0000
+
+//死循环
+// int main()
+// {
+//     unsigned int i;
+//     for(i = 9; i >= 0; i--)
+//     {
+//         printf("%u\n",i);
+//     }
+//     return 0;
+// }
+
+//255
+// int main()
+//  {
+//     char a[1000];
+//     int i;
+//     for(i=0; i<1000; i++)
+//     {
+//         a[i] = -1-i;
+//     }
+//     printf("%d",strlen(a));
+//     return 0;
+//  }
+
+// 死循环
+//  unsigned char i = 0;
+//  int main()
+//  {
+//     for(i = 0;i<=255;i++)
+//     {
+//         printf("hello world\n");
+//     }
+//     return 0;
+//  }
+// 0000 0000 0000 0000 0000 0000 1111 1111 //255
+// 0000 0000 0000 0000 0000 0001 0000 0000 //256
+// i=0;
+#include<string.h>
+int main()
+{
+    if(strlen("asd")-strlen("asdf")>=0)//strlen()函数的返回类型是size_t-->unsigned int
+    {
+        printf(">");
+    }
+    else
+    {
+        printf("<");
+    }
+    return 0;
+}
