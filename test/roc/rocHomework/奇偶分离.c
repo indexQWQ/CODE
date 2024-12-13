@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main()
 {
-    int arr[10]={1,2,3,4,5,6,7,8,9,10};
+    int arr[10]={1,3,5,7,9,11,13,15,19,21};
     int ze=sizeof(arr)/sizeof(arr[0]);
     int i=0;
     // for(i=0;i<ze;i++)

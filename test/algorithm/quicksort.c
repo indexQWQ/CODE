@@ -55,6 +55,7 @@ void quicksort(int arr[],int low,int high)
         int j=0;
         for(j=low;j<high;j++)
         {
+            
             if(arr[j]<povit)
             {
                 i++;
@@ -63,17 +64,17 @@ void quicksort(int arr[],int low,int high)
                 arr[i]=temp;
             }
         }
-        int pt=i+1;
-        int temp=arr[pt];
-        arr[pt]=arr[high];
-        arr[high]=temp;
-        quicksort(arr,low,pt-1);
-        quicksort(arr,pt+1,high);
+        int temp=arr[high];
+        arr[high]=arr[i+1];
+        arr[i+1]=temp;
+        int ip=i+1;
+        quicksort(arr,low,ip-1);
+        quicksort(arr,ip+1,high);
     }
 }
 int main()
 {
-    int arr[10]={2,1,3,4,7,6,8,9,5};
+    int arr[10]={2,1,3,4,7,6,8,9,5,10};
     quicksort(arr,0,9);
     int i=0;
     for(i=0;i<10;i++)
