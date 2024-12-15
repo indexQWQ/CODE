@@ -132,7 +132,10 @@
     "stdio.h": "c",
     "string.h": "c",
     "memcpy.C": "cpp",
-    "整形在内存中的存储.C": "cpp"
+    "整形在内存中的存储.C": "cpp",
+    "sstream": "c",
+    "stdlib.h": "c",
+    "windows.h": "c"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,
