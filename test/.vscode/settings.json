@@ -135,7 +135,8 @@
     "整形在内存中的存储.C": "cpp",
     "sstream": "c",
     "stdlib.h": "c",
-    "windows.h": "c"
+    "windows.h": "c",
+    "algorithm": "c"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,
