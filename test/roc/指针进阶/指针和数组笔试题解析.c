@@ -35,61 +35,77 @@
 //     return 0;
 // }
 
+// int main()
+// {
+//      //字符数组
+//     char arr[] = {'a','b','c','d','e','f'};
+//     printf("%d\n", sizeof(arr));//6
+//     printf("%d\n", sizeof(arr+0));//4or8
+//     printf("%d\n", sizeof(*arr));//1
+//     printf("%d\n", sizeof(arr[1]));//1
+//     printf("%d\n", sizeof(&arr));//4or8
+//     printf("%d\n", sizeof(&arr+1));//4or8
+//     printf("%d\n", sizeof(&arr[0]+1));//4or8
+//     printf("------------------------\n");
+//     printf("%d\n", strlen(arr));//random number
+//     // strlen(arr)中arr 表示首元素地址
+//     printf("%d\n", strlen(arr+0));//random number
+
+//     //printf("%d\n", strlen(*arr));//err//--->strlen('a')--->strlen(97),相当于97作为地址，变成野指针
+//     // size_t strlen(const char* str)所以传给strlen的应该是一个地址
+//     //printf("%d\n", strlen(arr[1]));//err//--->strlen('b')
+//     //低地址是内核使用的所以会报错，高地址才是提供给用户使用的
+//     //我们现在在c语言里面看到地址的基本上都是虚拟地址，而虚拟地址最后还要经过硬件和软件的计算才能转换为物理地址
+
+//     printf("%d\n", strlen(&arr));//random number
+//     // 类型为char (*)[6],虽然与上面strlen(arr)中的arr类型不一样，但是
+//     //传入strlen后都是一个字节一个字节的查找
+//     printf("%d\n", strlen(&arr+1));//random number-6
+//     printf("%d\n", strlen(&arr[0]+1));//random number-1
+//     return 0;
+// }
+
 int main()
 {
-     //字符数组
-    char arr[] = {'a','b','c','d','e','f'};
-    printf("%d\n", sizeof(arr));//6
+    //字符数组
+    char arr[] = "abcdef";
+    // char arr[]={'a','b','c','d','e','f','\0'}
+    printf("%d\n", sizeof(arr));//7
     printf("%d\n", sizeof(arr+0));//4or8
     printf("%d\n", sizeof(*arr));//1
     printf("%d\n", sizeof(arr[1]));//1
     printf("%d\n", sizeof(&arr));//4or8
     printf("%d\n", sizeof(&arr+1));//4or8
     printf("%d\n", sizeof(&arr[0]+1));//4or8
+    printf("----------\n");
+    // strlen--库函数:是求字符串长度的关注的是‘\0’,计算的是'\0'之前出现的字符串的长度
+    // 所使用的步长与所传地址的类型有关
+    // sizeof--操作符:只关注占用内存的空间的大小，不在乎内存里面放的是什么
 
-    printf("%d\n", strlen(arr));//random number
-    // strlen(arr)中arr 表示首元素地址
-    printf("%d\n", strlen(arr+0));//random number
-    printf("%d\n", strlen(*arr));//--->strlen('a')--->strlen(97)
-    // size_t strlen(const char* str)所以传给strlen的应该是一个地址
-    printf("%d\n", strlen(arr[1]));
-    printf("%d\n", strlen(&arr));
-    printf("%d\n", strlen(&arr+1));
-    printf("%d\n", strlen(&arr[0]+1));
+    printf("%d\n", strlen(arr));//6
+    printf("%d\n", strlen(arr+0));//6
+    //printf("%d\n", strlen(*arr));//err
+    //printf("%d\n", strlen(arr[1]));//err
+    printf("%d\n", strlen(&arr));//6
+    printf("%d\n", strlen(&arr+1));//random number
+    printf("%d\n", strlen(&arr[0]+1));//5
+
+    char *p = "abcdef";
+    printf("%d\n", sizeof(p));//4or8
+    printf("%d\n", sizeof(p+1));//4or8
+    printf("%d\n", sizeof(*p));//1
+    printf("%d\n", sizeof(p[0]));//1
+    printf("%d\n", sizeof(&p));//4or8
+    // &p是一个二级指针
+    printf("%d\n", sizeof(&p+1));//4or8
+    printf("%d\n", sizeof(&p[0]+1));//4or8
+    // p[0]-->'a',&('a')+1-->'b'的地址
+    printf("%d\n", strlen(p));//6
+    printf("%d\n", strlen(p+1));//5
+    printf("%d\n", strlen(*p));//err
+    printf("%d\n", strlen(p[0]));//err
+    printf("%d\n", strlen(&p));//random number
+    printf("%d\n", strlen(&p+1));//random number-1
+    printf("%d\n", strlen(&p[0]+1));//random number-1
     return 0;
 }
-
-// int main()
-// {
-//     char arr[] = "abcdef";
-//     printf("%d\n", sizeof(arr));
-//     printf("%d\n", sizeof(arr+0));
-//     printf("%d\n", sizeof(*arr));
-//     printf("%d\n", sizeof(arr[1]));
-//     printf("%d\n", sizeof(&arr));
-//     printf("%d\n", sizeof(&arr+1));
-//     printf("%d\n", sizeof(&arr[0]+1));
-//     printf("%d\n", strlen(arr));
-//     printf("%d\n", strlen(arr+0));
-//     printf("%d\n", strlen(*arr));
-//     printf("%d\n", strlen(arr[1]));
-//     printf("%d\n", strlen(&arr));
-//     printf("%d\n", strlen(&arr+1));
-//     printf("%d\n", strlen(&arr[0]+1));
-//     char *p = "abcdef";
-//     printf("%d\n", sizeof(p));
-//     printf("%d\n", sizeof(p+1));
-//     printf("%d\n", sizeof(*p));
-//     printf("%d\n", sizeof(p[0]));
-//     printf("%d\n", sizeof(&p));
-//     printf("%d\n", sizeof(&p+1));
-//     printf("%d\n", sizeof(&p[0]+1));
-//     printf("%d\n", strlen(p));
-//     printf("%d\n", strlen(p+1));
-//     printf("%d\n", strlen(*p));
-//     printf("%d\n", strlen(p[0]));
-//     printf("%d\n", strlen(&p));
-//     printf("%d\n", strlen(&p+1));
-//     printf("%d\n", strlen(&p[0]+1));
-//     return 0;
-// }
