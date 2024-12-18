@@ -160,7 +160,7 @@
 //     short sBa[4];
 // }*p=(struct Test*)0x100000;
 // //假设p 的值为0x100000。 如下表表达式的值分别为多少？
-// //已知，结构体Test类型的变量大小是20个字节//x86
+// //已知，结构体Test类型的变量大小是20个字节//x86环境下的大小
 // int main()
 // {
 //     printf("%p\n", p + 0x1);//0X100014
@@ -175,7 +175,7 @@
 //  {
 //  int a[4] = { 1, 2, 3, 4 };
 //  int *ptr1 = (int *)(&a + 1);
-//  int *ptr2 = (int *)((int)a + 1);
+//  int *ptr2 = (int *)((int)a + 1);//小端存储
 //  printf( "%x,%x", ptr1[-1], *ptr2);//4,02000000
 //  return 0;
 //  }
@@ -184,7 +184,7 @@
 // #include <stdio.h>
 // int main()
 // {
-//     int a[3][2] = { (0, 1), (2, 3), (4, 5) };//O.o
+//     int a[3][2] = { (0, 1), (2, 3), (4, 5) };//O.o//注意这里是()不是{}
 //     int *p;
 //     p = a[0];
 //     printf( "%d", p[0]);//1
@@ -212,12 +212,25 @@
 // }
 
 //笔试题7
-#include <stdio.h>
-int main()
-{
-    char *a[] = {"work","at","alibaba"};
-    char* *pa = a;
-    pa++;
-    printf("%s\n", *pa);
-    return 0;
-}
+// #include <stdio.h>
+// int main()
+// {
+//     char *a[] = {"work","at","alibaba"};
+//     char **pa = a; 
+//     printf("%s\n", *(pa+1));
+//     return 0;//at
+// }
+
+//笔试题8
+// int main()
+//  {
+//  char *c[] = {"ENTER","NEW","POINT","FIRST"};
+//  char**cp[] = {c+3,c+2,c+1,c};
+//  char***cpp = cp;
+//  printf("%s\n", **++cpp);//POINT
+//  printf("%s\n", *--*++cpp+3);//ER
+//  printf("%s\n", *cpp[-2]+3);//ST
+//  printf("%s\n", cpp[-1][-1]+1);//EW
+//  return 0;
+//  }
+

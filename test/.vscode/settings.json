@@ -136,7 +136,14 @@
     "sstream": "c",
     "stdlib.h": "c",
     "windows.h": "c",
-    "algorithm": "c"
+    "algorithm": "c",
+    "ctype.h": "c",
+    "string_view": "c",
+    "assert.h": "c",
+    "array": "c",
+    "deque": "c",
+    "string": "c",
+    "vector": "c"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,
