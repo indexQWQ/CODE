@@ -239,6 +239,8 @@
 
 
 
+
+
 // 长度受限制的字符串函数
 // strncpy
 // strncat
@@ -324,16 +326,122 @@
 
 
 
+
+
+
+
+
+
 // strstr
 // char * strstr ( const char *str1, const char * str2);
 //  Returns a pointer to the first occurrence of str2 in str1, or a null pointer if str2 is not part of str1
 /* strstr example */
-int main ()
+// int main ()
+// {
+//     char arr1[]="miHoYoGangShen is gorgeous";
+//     char arr2[]="GangShen";
+//     char *p=strstr(arr1,arr2);
+//     if(p==NULL)
+//     {
+//         printf("can't find\n");
+//     }
+//     else
+//     {
+//         printf("%s\n",p);
+//     }
+// } 
+
+// 模拟实现//kmp算法也是用来实现在字符串里面查找字符串的 效率高，难实现
+// 例子1
+// char * my_strstr ( const char *str1, const char * str2)
+// {
+//     //assert(str1 && str2);
+//     while(*str1)
+//     {
+//         if(*str1==*str2)
+//         {
+//             const char *p=str1;
+//             int count=0;
+//             while(*p==*(str2+count))
+//             {
+//                 p++;
+//                 count++;
+//             }
+//             if(*(str2+count)=='\0')
+//             {
+//                 return str1;
+//             }
+//         }
+//         str1++;
+//     }
+//     return NULL;
+// }
+// 例子2
+// char * my_strstr ( const char *str1, const char * str2)
+// {
+//     //assert(str1 && str2);
+//     const char *s1=str1;
+//     const char *s2=str2;
+//     const char *p=str1;
+//     while(*p)
+//     {
+//         s1=p;
+//         s2=str2;
+//         while(*s1!='\0' && *s2!='\0' && *s1==*s2)
+//         {
+//             s1++;
+//             s2++;
+//         }
+//         if(*s2=='\0')
+//         {
+//             return (char *)p;
+//         }
+//         p++;
+//     }
+//     return NULL;
+// }
+// int main ()
+// {
+//     char arr1[]="miHoYoGGangShen is gorgeous";
+//     char arr2[]="GangShen";
+//     char *p=my_strstr(arr1,arr2);
+//     if(p==NULL)
+//     {
+//         printf("can't find\n");
+//     }
+//     else
+//     {
+//         printf("%s\n",p);
+//     }
+// } 
+
+
+
+// strtok
+// 切割字符串
+// char * strtok ( char * str, const char * sep );
+//  sep参数是个字符串，定义了用作分隔符的字符集合
+// 第一个参数指定一个字符串，它包含了0个或者多个由sep字符串中一个或者多个分隔符分割的标记。
+// strtok函数找到str中的下一个标记，并将其用\0 结尾，返回一个指向这个标记的指针。#####注意会改变字符串#####
+// （注：strtok函数会改变被操作的字符串，所以在使用strtok函数切分的字符串一般都是临时拷贝的内容并且可修改。）
+// strtok函数的第一个参数不为NULL ，函数将找到str中第一个标记，strtok函数将保存它在字符串中的位置。
+// strtok函数的第一个参数为NULL ，函数将在同一个字符串中被保存的位置开始，查找下一个标记。
+// 如果字符串中不存在更多的标记，则返回NULL 指针。
+int main()
 {
-    char str[] ="This is a simple string";
-    char * pch;
-    pch = strstr (str,"simple");
-    strncpy (pch,"sample",6);
-    puts (str);
+    const char*sep="@.";
+    char email[]="3517905471@qq.com";//#####注意会改变字符串#####
+    char cpy[20]={0};
+    strcpy(cpy,email);
+    //strtok(cpy,sep);
+
+    char *ret=strtok(cpy,sep);
+    printf("%s\n",ret);
+    while(ret)
+    {
+        ret=strtok(NULL,sep);
+        printf("%s\n",ret);
+        
+    }  
     return 0;
-} 
+}
