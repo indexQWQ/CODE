@@ -555,37 +555,80 @@
 // 和memcpy的差别就是memmove函数处理的源内存块和目标内存块是可以重叠的。
 // 如果源空间和目标空间出现重叠，就得使用memmove函数处理。
 // 模拟实现
-void * my_memmove ( void * destination, const void * source, size_t num )
-{
-    // assert(destination && source);
-    size_t count=0;
-    while(count<num)
-    {
-        *((char *)destination+count)=*((char *)source+count);
-        count++;
-    }
-    return destination;
-}
-void test2()
-{
-    int arr1[]={1,2,3,4,5,6,7,8,9,10};
-    my_memmove(arr1+2,arr1,sizeof(int)*5);
-    int i=0;
-    for(;i<10;i++)
-    {
-        printf("%d ",arr1[i]);
-    }
-}
-int main()
-{
-    test2();
-    return 0;
-}
+// void * my_memmove ( void * destination, const void * source, size_t num )
+// {
+//     // assert(destination && source);
+//     size_t count=0;
+//     if(destination-source<0)
+//     {
+//         while(count<num)
+//         {
+//             *((char *)destination+count)=*((char *)source+count);
+//             count++;
+//         }
+//     }
+//     else
+//     {
+//         while(count<num)
+//         {
+//             *((char *)destination+num-1-count)=*((char *)source+num-1-count);
+//             count++;
+//         }
+//     }    
+//     return destination;
+// }
+// void test2()
+// {
+//     int arr1[]={1,2,3,4,5,6,7,8,9,10};
+//     my_memmove(arr1+2,arr1,sizeof(int)*5);
+//     int i=0;
+//     for(;i<10;i++)
+//     {
+//         printf("%d ",arr1[i]);
+//     }
+// }
+// int main()
+// {
+//     test2();
+//     return 0;
+// }
 
 
 
 // memcmp
 // int memcmp ( const void * ptr1, const void * ptr2, size_t num );
 // 比较从ptr1和ptr2指针开始的num个字节
+// int main()
+// {
+//     int arr1[]={1,2,3,4,5};
+//     int arr2[]={1,2,3};
+//     int flag=memcmp(arr1,arr2,sizeof(arr2));
+//     printf("%d\n",flag);
+//     if(flag>0)
+//     {
+        
+//     }
+//     return 0;
+// }
 
 
+
+// memset
+// void *memset(void *s, int c, size_t n);
+// 可以使用memset初始化数组
+// int main()
+// {
+//     // char arr[]="miHoYo hello";
+//     // //memset(arr,'X',6);
+//     // //memset(arr+7,'X',5);
+//     // printf("%s\n",arr);
+//     int arr[10]={0};
+//     memset(arr,1,10*sizeof(int));
+//     int i=0;
+//     for(i=0;i<10;i++)
+//     {
+//         printf("%d ",arr[i]);
+//     }
+//     // memset修改的是每一个字节
+//     return 0;
+// }
