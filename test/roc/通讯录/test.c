@@ -2,13 +2,21 @@
 
 void menu()
 {
-
+    printf("********************************\n");
+    printf("****1.add 2.del 3.search********\n");
+    printf("****4.modefy 5.show 6.sort******\n");
+    printf("****0.exit**********************\n");
+    printf("********************************\n");
 }
 int main()
 {
+    peoinfo date[100];
+    int count=0;
     int input=0;
     do
     {
+        menu();
+        printf("please choice:");
         scanf("%d",&input);
         switch (input)
         {
@@ -31,7 +39,7 @@ int main()
             
             break;
         case 0:
-            printf("推出\n")
+            printf("exit\n");
             break;
         default:
             break;

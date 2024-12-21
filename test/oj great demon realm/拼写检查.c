@@ -10,7 +10,8 @@ int main()
     getchar();
     for (int m = 0; m < l; m++) 
     {
-        fgets(word[m],sizeof(word[m]),stdin);
+        //fgets(word[m],sizeof(word[m]),stdin);
+        gets(word[m]);
         int len=strlen(word[m]);
         if(len>0&&word[m][len-1]=='\n')
         {
@@ -34,3 +35,4 @@ int main()
     }
     return 0;
 }
+
