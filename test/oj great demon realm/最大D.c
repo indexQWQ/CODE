@@ -1,8 +1,3 @@
-// #include <stdio.h>
-// #include <string.h>
-// #include <ctype.h>
-// #include <math.h>
-
 // long long caculate(long long sum,int len)
 // {
 //     if(len==1)
@@ -57,13 +52,15 @@
 // }
 
 
+
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
 
-void caculate(char *arr1,char *arr2,int left,int right,int count)
+void caculate(char *arr1,char *arr2,int left,int right)
 {
+    int count=0;
     while(left<=right)
     {
         if(*(arr1+left)<*(arr1+right))
@@ -80,55 +77,10 @@ void caculate(char *arr1,char *arr2,int left,int right,int count)
             left++;
             continue;
         }
-        else if(*(arr1+left)==*(arr1+right) && left==right)
+        else if(*(arr1+left)==*(arr1+right))
         {
-            *(arr2+count)=*(arr1+left);
-            count++;
+            *(arr2+count)=*(arr1+right);
             break;
-        }
-        else
-        {
-            int left1=left-1;
-            int right1=right-1;
-            int flag=1;
-            while(left1<=right1)
-            {
-                if(*(arr1+left1)>*(arr1+right1))
-                {
-                    left1=10;
-                    flag=0;
-                    break;
-                }
-                else if(*(arr1+left1)<*(arr1+right1))
-                {
-                    right1=10;
-                    flag=0;
-                    break;
-                }
-                else
-                {
-                    left1++;
-                    right1--;
-                }
-            }
-            if(left1==10)
-            {
-                *(arr2+count)=*(arr1+left);
-                count++;
-                left++;
-                continue;
-            }
-            if(right1==10)
-            {
-                *(arr2+count)=*(arr1+right);
-                count++;
-                right--;
-                continue;
-            }
-            if(flag)
-            {
-                return;
-            }
         }
     }
 }
@@ -157,7 +109,7 @@ int main()
     }
     int left=0;
     int right=count-1;
-    caculate(arr1,arr2,left,right,0);
+    caculate(arr1,arr2,left,right);
     printf("%s",arr2);
     return 0;
 }
