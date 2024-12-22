@@ -2,7 +2,7 @@
 
 int main()
 {
-    int arr[3][4]={0};
+    int arr[3][4]={{1,2,3,4},{2,3,4,5},{3,4,5,6}};
     printf("%d\n", sizeof(arr)/sizeof(arr[0]));//计算二维数组的行数
     pritnf("%d\n", sizeof(arr[0])/sizeof(arr[0][0]));//计算二维数组的列数
     // int sz=sizeof(arr);
