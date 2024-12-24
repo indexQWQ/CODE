@@ -2,7 +2,16 @@
 //2.动态的版本
 //3.文件的版本
 #include "contact.h"
-
+enum Option
+{
+    EXIT,
+    ADD,
+    DEL,
+    SEARCH,
+    MODIFY,
+    SHOW,
+    SORT
+};
 void menu()
 {
     printf("********************************\n");
@@ -25,26 +34,26 @@ int main()
         system("cls");
         switch (input)
         {
-        case 1:
+        case ADD:
             addcontact(&con);
             break;
-        case 2:
+        case DEL:
             delcontact(&con);
             break;
-        case 3:
+        case SEARCH:
             //findbyname(&con);
             searchcontact(&con);
             break;
-        case 4:
+        case MODIFY:
             modifycontact(&con);
             break;
-        case 5:
+        case SHOW:
             showcontact(&con);
             break;
-        case 6:
+        case SORT:
             sortcontact(&con);
             break;
-        case 0:
+        case EXIT:
             printf("exit\n");
             break;
         default:

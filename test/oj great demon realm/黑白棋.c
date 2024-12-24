@@ -112,6 +112,7 @@ void find(int (*arr)[10],have *ph,int n,int m,int x1,int y1,int *flag)
                 }
             }
         }
+        printf("%d %d  %d   %d\n",sum,s,ph->date[i].x,ph->date[i].y);
         if(sum==s*2)
         {
             *flag=0;
@@ -125,6 +126,7 @@ void find(int (*arr)[10],have *ph,int n,int m,int x1,int y1,int *flag)
                 (ph->date)[j]=(ph->date)[j+1];
             }
             ph->count--;
+            i--;
         }
     }
     
@@ -207,3 +209,13 @@ int main()
     }
     return 0;
 }
+// 8 8
+// 1 0 0 1 0 0 0 1
+// 0 2 0 2 0 0 2 0
+// 0 0 2 2 0 2 0 0
+// 0 0 0 2 2 0 0 0
+// 1 2 2 0 2 0 1 1
+// 0 0 2 2 0 2 0 0
+// 0 2 0 1 0 0 2 0
+// 1 0 0 0 0 0 0 1
+// 3 4
