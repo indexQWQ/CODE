@@ -95,14 +95,14 @@ void find(int (*arr)[10],have *ph,int n,int m,int x1,int y1,int *flag)
                 int j=0;
                 for(j=0;j<m;j++)
                 {
-                    if((x1-x2)*(y1-y2)>0)
+                    if((x1-x2)*(y1-y2)>0 && (x1-y1==x2-y2))
                     {
                         if(j-i==x1-y1 && j>(x1<x2?x1:x2) && j<(x1>x2?x1:x2) && i>(y1<y2?y1:y2) && i<(y1>y2?y1:y2))
                         {
                             sum+=(*(*(arr+i)+j));
                         }
                     }
-                    else
+                    else if((x1-x2)*(y1-y2)<0 && (x1+y1==x2+y2))
                     {
                         if(j+i==x1+y1 && j>(x1<x2?x1:x2) && j<(x1>x2?x1:x2) && i>(y1<y2?y1:y2) && i<(y1>y2?y1:y2))
                         {
@@ -112,8 +112,8 @@ void find(int (*arr)[10],have *ph,int n,int m,int x1,int y1,int *flag)
                 }
             }
         }
-        printf("%d %d  %d   %d\n",sum,s,ph->date[i].x,ph->date[i].y);
-        if(sum==s*2)
+        //printf("%d %d  %d   %d\n",sum,s,ph->date[i].x,ph->date[i].y);
+        if(sum==s*2 && s!=0)
         {
             *flag=0;
         }
@@ -219,3 +219,14 @@ int main()
 // 0 2 0 1 0 0 2 0
 // 1 0 0 0 0 0 0 1
 // 3 4
+
+// 8 8
+// 1 0 0 1 0 0 0 1
+// 0 2 0 2 0 0 2 0
+// 0 0 2 2 0 2 0 0
+// 0 0 0 2 2 0 0 0
+// 1 2 2 0 2 0 1 1
+// 0 0 2 2 0 2 0 0
+// 0 2 0 1 0 0 2 0
+// 1 0 0 0 0 0 0 1
+// 2 3
