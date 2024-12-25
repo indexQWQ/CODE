@@ -54,6 +54,7 @@ int main()
             sortcontact(&con);
             break;
         case EXIT:
+            destroycontact(&con);
             printf("exit\n");
             break;
         default:

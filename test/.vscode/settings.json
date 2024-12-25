@@ -146,7 +146,12 @@
     "vector": "c",
     "time.h": "c",
     "contact.c": "cpp",
-    "typeinfo": "cpp"
+    "typeinfo": "cpp",
+    "istream": "c",
+    "ostream": "c",
+    "tuple": "c",
+    "type_traits": "c",
+    "utility": "c"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,

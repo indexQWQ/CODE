@@ -11,26 +11,94 @@ typedef struct Peoinfo
 }peoinfo;
 
 // 通讯录
+// 静态的版本
+// typedef struct Contact
+// {
+//     peoinfo date[MAX];
+//     int count;//记录当前通讯录中实际人的个数
+// }contact;
 
+// 动态的版本
 typedef struct Contact
 {
-    peoinfo date[MAX];
+    peoinfo *date;
     int count;//记录当前通讯录中实际人的个数
+    int capacity;// 当前通讯录的容量
 }contact;
 // 初始化通讯录
-void initcontact(contact * pc)
+// 静态的版本
+// void initcontact(contact * pc)
+// {
+//     pc->count=0;
+//     memset(pc->date,0,sizeof(pc->date));
+// }
+// 动态的版本
+int initcontact(contact * pc)
 {
     pc->count=0;
-    memset(pc->date,0,sizeof(pc->date));
+    pc->date=(peoinfo *)calloc(DEFINE_SZ,sizeof(peoinfo));
+    if(pc->date==NULL)
+    {
+        printf("%s\n",strerror(errno));
+        return 1;
+    }
+    pc->capacity=DEFINE_SZ;
+    return 0;
+}
+// 扩容函数
+void checkcapacity(contact *pc)
+{
+    peoinfo *p=(peoinfo *)realloc(pc->date,(pc->capacity+2)*sizeof(peoinfo));
+    if(p==NULL)
+    {
+        printf("addcontact:%s\n",strerror(errno));
+        return ;
+    }
+    else
+    {
+        pc->date=p;
+        pc->capacity+=2;
+        printf("增容成功\n");
+    }
+}
+// 销毁通讯录
+void destroycontact(contact *pc)
+{
+    free(pc->date);
+    pc->date=NULL;
 }
 // 增加联系人
+// 静态的版本
+// void addcontact(contact* pc)
+// {
+//     //assert(pc);
+//     if(pc->count==100)
+//     {
+//         printf("满了\n");
+//         return 0;
+//     }
+//     printf("请输入名字：");
+//     scanf("%s",(pc->date)[pc->count].name);
+//     printf("请输入年龄：");
+//     scanf("%d",&((pc->date)[pc->count].age));
+//     printf("请输入性别：");
+//     scanf("%s",(pc->date)[pc->count].sex);
+//     printf("请输入电话：");
+//     scanf("%s",(pc->date)[pc->count].tele);
+//     printf("请输入地址：");
+//     scanf("%s",(pc->date)[pc->count].arrd);
+//     pc->count++;
+//     //printf("%d\n",pc->count);
+//     printf("添加成功\n");
+// }
+// 动态的版本
 void addcontact(contact* pc)
 {
     //assert(pc);
-    if(pc->count==100)
+    // 如果空间不够增加容量
+    if(pc->count==pc->capacity)
     {
-        printf("满了\n");
-        return 0;
+        checkcapacity(pc);
     }
     printf("请输入名字：");
     scanf("%s",(pc->date)[pc->count].name);

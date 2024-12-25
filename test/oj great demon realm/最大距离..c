@@ -1,126 +1,84 @@
-// #include <stdio.h>
-// #include <string.h>
-
-// #define ROW 100
-// #define COL 100
-
-// typedef struct
-// {
-//     int x,y;
-// }point;
-
-// void scan(int arr[ROW][COL],int n,int m)
-// {
-//     int i=0;
-//     for(i=0;i<n;i++)
-//     {
-//         int j=0;
-//         for(j=0;j<m;j++)
-//         {
-//             scanf("%d",arr[i][j]);
-//         }
-//     }
-// }
-// void jishu(point *arr1[ROW][COL],int count [], int arr[ROW][COL],int n,int m)
-// {
-//     int i=0;
-//     for(i=0;i<n;i++)
-//     {
-//         int j=0;
-//         for(j=0;j<m;j++)
-//         {
-//             count[arr[i][j]]++;
-//             arr1[i][j]->x=i+1;
-//             arr1[i][j]->y=j+1;
-//         }
-//     }
-// }
-// int main()
-// {
-//     int arr[ROW][COL];
-//     int count[ROW*COL]={0};
-//     point arr1[ROW][COL];
-//     memset(arr,0,sizeof(arr));
-//     int n=0,m=0;
-//     scanf("%d%d",&n,&m);
-//     jishu(arr1,count,arr,n,m);
-//     int i=0;
-//     for(i=0;i<n;i++)
-//     {
-//         int j=0;
-//         for(j=0;j<m;j++)
-//         {
-            
-//         }
-//     }
-//     return 0;
-// }
-
-
 #include <stdio.h>
-#include <stdlib.h>
-
-#define MAX_COLORS 1000  // 假设颜色的最大值不超过1000
-#define MAX_POINTS 10000 // 假设每个颜色的点数不超过10000
-
-typedef struct 
+#include <string.h>
+#define NUM 100
+#define COLAR 100
+typedef struct Point
 {
-    int x, y;
-} Point;
-
-int max(int a, int b) 
+	int x;
+	int y;
+}point;
+typedef struct Calor
 {
-    return a > b ? a : b;
+	point date[COLAR];
+	int count;
+}colar;
+// 输入
+void my_scanf(int (*arr)[NUM],int n,int m,colar *type)
+{
+	int i=0;
+	for(i=0;i<n;i++)
+	{
+		int j=0;
+		for(j=0;j<m;j++)
+		{
+			scanf("%d",&arr[i][j]);
+			(type[arr[i][j]].date)[type[arr[i][j]].count].x=j;
+			(type[arr[i][j]].date)[type[arr[i][j]].count].y=i;
+			//printf("%d %d\n",(type[arr[i][j]].date)[type[arr[i][j]].count].x,(type[arr[i][j]].date)[type[arr[i][j]].count].y);
+			type[arr[i][j]].count++;
+		}
+	}
 }
-
-int main() 
+//计算距离
+int caculate_s(int x1,int y1,int x2,int y2)
 {
-    int n, m;
-    scanf("%d %d", &n, &m);
-
-    int image[n][m];
-    for (int i = 0; i < n; i++) 
-    {
-        for (int j = 0; j < m; j++) 
-        {
-            scanf("%d", &image[i][j]);
-        }
-    }
-
-    // 记录每个颜色的点的坐标
-    Point points[MAX_COLORS][MAX_POINTS];
-    int count[MAX_COLORS] = {0};
-
-    for (int i = 0; i < n; i++) 
-    {
-        for (int j = 0; j < m; j++) 
-        {
-            int color = image[i][j];
-            points[color][count[color]].x = i;
-            points[color][count[color]].y = j;
-            count[color]++;
-        }
-    }
-
-    // 计算相同颜色点的最大平方距离
+	return (x1-x2)*(x1-x2)+(y1-y2)*(y1-y2);
+}
+//传给qsort
+int sort_bynum(const void *e1, const void *e2 )
+{
+	return *((int *)e1)-*((int *)e2);
+}
+//功能写完//有问题
+int find_max(colar *type)
+{
     int max_distance = 0;
-    for (int color = 0; color < MAX_COLORS; color++) 
+    for (int i = 0; i < COLAR; i++)
     {
-        if (count[color] > 1) {
-            for (int i = 0; i < count[color]; i++) 
+        if (type[i].count >= 2)
+        {
+            int min_x = type[i].date[0].x;
+            int max_x = type[i].date[0].x;
+            int min_y = type[i].date[0].y;
+            int max_y = type[i].date[0].y;
+            for (int j = 1; j < type[i].count; j++)
             {
-                for (int j = i + 1; j < count[color]; j++) 
-                {
-                    int dx = points[color][i].x - points[color][j].x;
-                    int dy = points[color][i].y - points[color][j].y;
-                    int distance = dx * dx + dy * dy;
-                    max_distance = max(max_distance, distance);
-                }
+                if (type[i].date[j].x < min_x)
+                    min_x = type[i].date[j].x;
+                if (type[i].date[j].x > max_x)
+                    max_x = type[i].date[j].x;
+                if (type[i].date[j].y < min_y)
+                    min_y = type[i].date[j].y;
+                if (type[i].date[j].y > max_y)
+                    max_y = type[i].date[j].y;
+            }
+            int distance = caculate_s(min_x, min_y, max_x, max_y);
+            if (distance > max_distance)
+            {
+                max_distance = distance; 
             }
         }
     }
-
-    printf("%d\n", max_distance);
-
-    return 0;
+    return max_distance;
+}
+int main()
+{
+	int arr[NUM][NUM]={0};
+	int n=0,m=0;
+	scanf("%d%d ",&n,&m);
+	colar type[COLAR]={0};
+	my_scanf(arr,n,m,type);
+	int max=find_max(type);
+	printf("%d\n",max);
+	return 0;
 }
