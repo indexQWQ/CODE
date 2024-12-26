@@ -4,7 +4,7 @@
 void menu()
 {
     printf("*********************\n");
-    printf("****1.play 2.exit****\n");
+    printf("****1.play 0.exit****\n");
     printf("*********************\n");
 }
 
@@ -37,7 +37,7 @@ int main()
             printf("开始游戏\n");
             game();
             break;
-        case 2:
+        case 0:
             printf("退出游戏\n");
             break;
         default:

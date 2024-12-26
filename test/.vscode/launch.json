@@ -73,7 +73,7 @@
             "environment": [],
             "externalConsole": true,
             "MIMode": "gdb",
-            "miDebuggerPath": "C:\\mingw64\\bin\\gdb.exe",// 自己电脑的gdb
+            "miDebuggerPath": "C:\\mingw64\\bin\\gdb.exe",// 自己电脑的gdb"C:\\mingw64\\bin\\gdb.exe"
             "preLaunchTask": "echo",//这里和task.json的label相对应
             "setupCommands": [
                 {

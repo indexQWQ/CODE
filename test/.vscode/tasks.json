@@ -48,6 +48,7 @@
                 "${file}", 
                 "-o", 
                 "${fileBasenameNoExtension}.exe",
+                "-leasyx",
                 "-fexec-charset=GBK"//解决中文乱码
             ]
         }
