@@ -152,7 +152,8 @@
     "tuple": "c",
     "type_traits": "c",
     "utility": "c",
-    "graphics.h": "c"
+    "graphics.h": "c",
+    "几个经典的笔试题.C": "cpp"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,
