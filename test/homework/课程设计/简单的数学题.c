@@ -1,52 +1,96 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-int convert(const char *num)
+void input_to_nums(char *input,char *nums,float *num,int *i)
 {
-    int len=strlen(num);
-    int sum=0;
-    int j=0;
-    while(j<len)
+    while(*input!='\0')
     {
-            sum=sum*10+(num[j++]-'0');
+        int sum=0;
+        while((*input-'0')>=0 && (*input-'0')<=9)
+        {
+            sum=sum*10+(*input-'0');
+            input++;
+        }
+        num[(*i)]=sum;
+        nums[(*i)++]=*input++;
     }
-    return sum;
+    nums[(*i)-1]='=';
 }
-void input_to_nums(char *input,char (*nums)[100],int *i)
+void asad(char *nums,float *num,int *len,char c)
 {
-    char copy[100]={0};
-    strcpy(copy,input);
-    strcpy(nums[(*i)++],strtok(copy,"+-*/="));
-    (*i)++;
-    char *pu=NULL;
-    while((pu=strtok(NULL,"+-*/="))!=NULL)
+    int i=0;
+    for(i=0;i<*len;i++)
     {
-        strcpy(nums[(*i)++],pu);
-        (*i)++;
-    }
-    int j=0;
-    for(j=1;j<*i;j+=2)
-    {
-        while(*input>='0' && *input<='9')input++;
-        nums[j][0]=*input++;
+        if(nums[i]==c)
+        {
+            if(c=='*')
+                num[i]=num[i]*num[i+1];
+            else if(c=='/')
+                num[i]=num[i]/num[i+1];
+            int j=0;
+            for(j=i+1;j+1<*len;j++)
+            {
+                num[j]=num[j+1];
+            }
+            for(j=i;j+1<*len;j++)
+            {
+                nums[j]=nums[j+1];
+            }
+            (*len)--;
+            i--;
+        }
     }
 }
-void caculate(char (*nums)[100],int *len)
+void sub_add(char *nums,float *num,int *len)
 {
+    int i=0;
+    for(i=0;i<*len;i++)
+    {
+        if(nums[i]=='-')
+            num[i]=num[i]-num[i+1];
+        else if(nums[i]=='+')
+            num[i]=num[i]+num[i+1];
+        int j=0;
+        for(j=i+1;j+1<*len;j++)
+        {
+            num[j]=num[j+1];
+        }
+        for(j=i;j+1<*len;j++)
+        {
+            nums[j]=nums[j+1];
+        }
+        (*len)--;
+        i--;
+    }
+}
+void caculate(char *nums,float *num,int *len)
+{
+    asad(nums,num,len,'/');
+    asad(nums,num,len,'*');  
+    sub_add(nums,num,len);
+}
 
-}
 int main()
 {
     char input[100]={0};
-    char nums[100][100]={0};
+    float num[100]={0};
+    char nums[100]={0};
     scanf("%s",input);
     int i=0;
-    input_to_nums(input,nums,&i);
-    caculate(nums,&i);
-    int j=0;
-    for(j=0;j<i;j++)
+    input_to_nums(input,nums,num,&i);
+    caculate(nums,num,&i);
+    // int j=0;
+    // for(j=0;j<i;j++)
+    // {
+    //     printf("%d %c\n",num[j],nums[j]);
+    // }
+    if(num[0]==num[1])
     {
-        puts(nums[j]);
+        printf("Correct\n");
+    }
+    else
+    {
+        printf("Wrong\n%.0f\n",num[0]);
     }
     return 0;  
 }
