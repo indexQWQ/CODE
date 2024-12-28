@@ -1,30 +1,29 @@
 #include <stdio.h>
-#include <string.h>
 #include <ctype.h>
+
 int main()
 {
     char word[1000]={0};
     fgets(word,1000,stdin);
     char *p=word;
-    while((p=strstr(p,"@"))!=NULL)
+    while(*p!='\0')
     {
-        p++;
-        char copy[1000]={0};
-        strcpy(copy,p);
-        int flag=1;
-        char *pc=strtok(copy,"@ ");
-        if(pc!=NULL)
+        if(*p=='@')
         {
-            int len=strlen(pc);
-            //printf("%d\n",len);
-            int i=0;
-            for(i=0;i<len-1;i++)
+            p++;
+            int flag=0;
+            while(isalpha(*p))
             {
-                if(!isalpha(*(pc+i)))flag=0;
+                printf("%c",*p++);
+                flag=1;
             }
+            if(flag)
+            {
+                printf("\n");
+            }
+            continue;
         }
-        if(flag)
-        printf("%s\n",pc);
+        p++;
     }
     return 0;
 }

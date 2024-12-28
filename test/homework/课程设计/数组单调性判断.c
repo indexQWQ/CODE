@@ -8,7 +8,7 @@ int main()
     int i=0;
     int flag1=0;
     int flag2=0;
-    for(i=0;i<n-1;i++)
+    for(i=0;i<n;i++)
     {
         scanf("%d",&arr[i]);
         if(i>0)
@@ -19,7 +19,7 @@ int main()
             }
             else if(arr[i]<arr[i-1])
             {
-                flag2=0;
+                flag2=1;
             }
             else
             {
