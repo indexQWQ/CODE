@@ -153,7 +153,9 @@
     "type_traits": "c",
     "utility": "c",
     "graphics.h": "c",
-    "几个经典的笔试题.C": "cpp"
+    "几个经典的笔试题.C": "cpp",
+    "cstdio": "c",
+    "fstream": "c"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,

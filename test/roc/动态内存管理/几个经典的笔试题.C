@@ -28,6 +28,19 @@ void Test(void)
 }
 
 //  题目3：
+void GetMemory(char **p, int num)
+{
+    *p = (char *)malloc(num);//没有释放内存泄漏
+}
+void Test(void)
+{
+    char *str = NULL;
+    GetMemory(&str, 100);
+    strcpy(str, "hello");
+    printf(str);//可以打印hello
+}
+
+//  题目4：
 void Test(void)
 {
     char *str = (char *) malloc(100);
@@ -40,3 +53,14 @@ void Test(void)
     }
 }
 
+int *test()
+{
+    int a=10;
+    return &a;
+}
+
+int main()
+{
+    int *p=test();
+    printf("%d\n",*p);
+}
