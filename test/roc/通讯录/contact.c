@@ -32,19 +32,7 @@ typedef struct Contact
 //     pc->count=0;
 //     memset(pc->date,0,sizeof(pc->date));
 // }
-// 动态的版本
-int initcontact(contact * pc)
-{
-    pc->count=0;
-    pc->date=(peoinfo *)calloc(DEFINE_SZ,sizeof(peoinfo));
-    if(pc->date==NULL)
-    {
-        printf("%s\n",strerror(errno));
-        return 1;
-    }
-    pc->capacity=DEFINE_SZ;
-    return 0;
-}
+
 // 扩容函数
 void checkcapacity(contact *pc)
 {
@@ -61,6 +49,46 @@ void checkcapacity(contact *pc)
         printf("增容成功\n");
     }
 }
+// 加载通讯录
+void loadcontact(contact * pc)
+{
+    // assert(pc);
+    FILE* pf=fopen("C:\\Users\\Lenovo\\OneDrive\\desktop\\CODE1\\test\\roc\\通讯录\\contact.txt","r");
+    if(pf==NULL)
+    {
+        perror("load_fopen");
+        return ;
+    }
+    peoinfo buf={0};
+    while(fread(&buf,sizeof(peoinfo),1,pf)==1)
+    {
+        if(pc->count==pc->capacity)
+        {
+            checkcapacity(pc);
+        }
+        //memcmp(pc->date+pc->count,&buf,sizeof(peoinfo));
+        pc->date[pc->count]=buf;//结构体相互之间可以直接赋值
+        pc->count++;
+    }
+    fclose(pf);
+    pf=NULL;
+}
+// 动态的版本
+int initcontact(contact * pc)
+{
+    pc->count=0;
+    pc->date=(peoinfo *)calloc(DEFINE_SZ,sizeof(peoinfo));
+    if(pc->date==NULL)
+    {
+        printf("%s\n",strerror(errno));
+        return 1;
+    }
+    pc->capacity=DEFINE_SZ;
+    // 加载文件的信息到通讯录中
+    loadcontact(pc);
+    return 0;
+}
+
 // 销毁通讯录
 void destroycontact(contact *pc)
 {
@@ -270,16 +298,22 @@ void savecontact(const contact* pc)
         perror("fopen");
         return;
     }
-    fprintf(pf,"%-20s\t%-5s\t%-5s\t%-12s\t%-30s\t\n","name","age","sex","tele","arrd");
+    // fprintf(pf,"%-20s\t%-5s\t%-5s\t%-12s\t%-30s\t\n","name","age","sex","tele","arrd");
+    // int i=0;
+    // for(i=0;i<pc->count;i++)
+    // {
+    //     fprintf(pf,"%-20s\t%-5d\t%-5s\t%-12s\t%-30s\t",(pc->date)[i].name
+    //     ,(pc->date)[i].age
+    //     ,(pc->date)[i].sex
+    //     ,(pc->date)[i].tele
+    //     ,(pc->date)[i].arrd);
+    //     printf("\n");
+    // }
+    // 转换成二进制
     int i=0;
     for(i=0;i<pc->count;i++)
     {
-        fprintf(pf,"%-20s\t%-5d\t%-5s\t%-12s\t%-30s\t",(pc->date)[i].name
-        ,(pc->date)[i].age
-        ,(pc->date)[i].sex
-        ,(pc->date)[i].tele
-        ,(pc->date)[i].arrd);
-        printf("\n");
+        fwrite(pc->date+i,sizeof(peoinfo),1,pf);
     }
     fclose(pf);
     pf=NULL;
