@@ -8,6 +8,12 @@
 // 格式化输入函数fscanf  所有输入流     int fscanf(FILE *stream, const char *format, ...)   如果成功，该函数返回成功匹配和赋值的个数。如果到达文件末尾或发生读错误，则返回 EOF。
 // 格式化输出函数fprintf 所有输出流     int fprintf(FILE *stream, const char *format, ...)  如果成功，则返回写入的字符总数，否则返回一个负数
 // 二进制输入   fread    文件    size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream)
+// ptr -- 这是指向带有最小尺寸 size*nmemb 字节的内存块的指针。
+// size -- 这是要读取的每个元素的大小，以字节为单位。
+// nmemb -- 这是元素的个数，每个元素的大小为 size 字节。
+// stream -- 这是指向 FILE 对象的指针，该 FILE 对象指定了一个输入流。
+// 成功读取的元素总数会以 size_t 对象返回，size_t 对象是一个整型数据类型。如果总数与 nmemb 参数不同，则可能发生了一个错误或者到达了文件末尾。
+
 // 二进制输出   fwrite   文件    size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream)
 
 // // 写字符
