@@ -163,25 +163,68 @@
 //     return 0;
 // }
 
-// 二进制输入
+// // 二进制输入
+// struct s
+// {
+//     char ar[10];
+//     int age;
+//     float score;
+// };
+// int main()
+// {
+//     struct s s1={"miHoYo",18,3.1415f},s2;
+//     FILE*pf=fopen("C:\\Users\\Lenovo\\OneDrive\\desktop\\test.txt","rb");//a是追加
+//     if(pf==NULL)
+//     {
+//         perror("fopen");//fopen: +错误信息//void perror(const char *str)
+//         return 1;
+//     }
+//     fread(&s2,sizeof(s1),1,pf);
+//     fprintf(stdout,"%s %d %f",s2.ar,s2.age,s2.score);
+//     pclose(pf);
+//     pf=NULL;
+//     return 0;
+// }
+
+
+// 对比一组函数： 
+// scanf/fscanf/sscanf
+// printf/fprintf/sprintf
+
+// scanf是针对标准标准输入的格式化输入语句
+// printf是针对标准标准输出的格式化输出语句
+
+// fscanf是针对所以输入流的格式化输入语句
+// fprintf是针对所以输出流的格式化输出语句
+
+// sscanf 从一个字符串中转换出格式化的数据
+// int sscanf(const char *str, const char *format, ...)
+// 把一个格式化的数据转换到字符串中，本质是把一个格式化的数据转换成字符串
+// sprintf 是把一个格式化的数据转换成字符串
+
 struct s
 {
-    char ar[10];
+    /* data */
+    char arr[10];
     int age;
     float score;
 };
+
 int main()
 {
-    struct s s1={"miHoYo",18,3.1415f},s2;
-    FILE*pf=fopen("C:\\Users\\Lenovo\\OneDrive\\desktop\\test.txt","rb");//a是追加
-    if(pf==NULL)
-    {
-        perror("fopen");//fopen: +错误信息//void perror(const char *str)
-        return 1;
-    }
-    fread(&s2,sizeof(s1),1,pf);
-    fprintf(stdout,"%s %d %f",s2.ar,s2.age,s2.score);
-    pclose(pf);
-    pf=NULL;
+    struct s s1={"miHoYo",18,3.1415f};
+    struct s s2={0};
+    char buf[100]={0};
+    sprintf(buf,"%s %d %f",s1.arr,s1.age,s1.score);
+    //输出的是字符串"miHoYo 18 3.141500"
+    //printf(buf);    
+    // 从字符串buf中获取一个格式化的数据到tmp中
+    sscanf(buf,"%s%d%f",s2.arr,&s2.age,&s2.score);
+    printf("%s %d %f",s2.arr,s2.age,s2.score);
     return 0;
 }
+// 开发bs网络服务器时
+// 要在网页前端输入个人信息，而前端输入的是字符串
+// 要交给后端处理，可能要放到结构体里面
+// 或者是又想把它展示出来
+// 这在专业的软件开发里叫序列化和反序列化

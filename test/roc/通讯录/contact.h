@@ -6,7 +6,7 @@
 #define MAX_NAME 20
 #define MAX_SEX 10
 #define MAX_TELE 12
-#define MAX_ADDR 30s
+#define MAX_ADDR 30
 #define DEFINE_SZ 3
 #include <stdio.h>
 #include <string.h>

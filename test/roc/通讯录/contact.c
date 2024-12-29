@@ -189,7 +189,7 @@ void delcontact(contact *pc)
     if(pc->count==0)
     {
         printf("无人可以删除\n");
-        return 0;
+        return ;
     }
     printf("请输入要删除的人的名字：");
     char name[MAX_NAME]={0};
@@ -258,4 +258,29 @@ void showcontact(const contact* pc)//const 保护
         ,(pc->date)[i].arrd);
         printf("\n");
     }
+}
+
+// 保存通讯录
+void savecontact(const contact* pc)
+{
+    //assert(pc);
+    FILE* pf=fopen("C:\\Users\\Lenovo\\OneDrive\\desktop\\CODE1\\test\\roc\\通讯录\\contact.txt","w");
+    if(pf==NULL)
+    {
+        perror("fopen");
+        return;
+    }
+    fprintf(pf,"%-20s\t%-5s\t%-5s\t%-12s\t%-30s\t\n","name","age","sex","tele","arrd");
+    int i=0;
+    for(i=0;i<pc->count;i++)
+    {
+        fprintf(pf,"%-20s\t%-5d\t%-5s\t%-12s\t%-30s\t",(pc->date)[i].name
+        ,(pc->date)[i].age
+        ,(pc->date)[i].sex
+        ,(pc->date)[i].tele
+        ,(pc->date)[i].arrd);
+        printf("\n");
+    }
+    fclose(pf);
+    pf=NULL;
 }

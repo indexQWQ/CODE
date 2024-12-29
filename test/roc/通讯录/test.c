@@ -54,6 +54,8 @@ int main()
             sortcontact(&con);
             break;
         case EXIT:
+            //想在结束后保存通讯录
+            savecontact(&con);
             destroycontact(&con);
             printf("exit\n");
             break;
