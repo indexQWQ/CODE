@@ -8,21 +8,25 @@ int main()
     int i=0;
     int flag1=0;
     int flag2=0;
-    for(i=1;i<n;i++)
+    for(i=0;i<n;i++)
     {
         scanf("%d",&arr[i]);
-        if(arr[i]>arr[i-1])
+        if(i>0)
         {
-            flag1=1;
+            if(arr[i]>arr[i-1])
+            {
+                flag1=1;
+            }
+            else if(arr[i]<arr[i-1])
+            {
+                flag2=1;
+            }
+            else
+            {
+                continue;
+            }
         }
-        else if(arr[i]<arr[i-1])
-        {
-            flag2=1;
-        }
-        else
-        {
-            continue;
-        }
+        
     }
     if(flag1+flag2<=1)
     {

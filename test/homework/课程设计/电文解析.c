@@ -23,7 +23,6 @@ void convert_nary(const char *arr,char *word)
         char copy[5]={0};
         strncpy(copy,arr,4);
         word[j]=convert_alpha(copy);
-        //printf("%c\n",word[j]);
         j++;
         arr+=4;
     }
