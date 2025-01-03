@@ -157,7 +157,10 @@
     "cstdio": "c",
     "fstream": "c",
     "errno.h": "c",
-    "limits": "c"
+    "limits": "c",
+    "sdl.h": "c",
+    "unordered_map": "c",
+    "initializer_list": "c"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,

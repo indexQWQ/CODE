@@ -1,4 +1,4 @@
-// 被错误使用的feof
+// 被错误使用的feof(当设置了与流关联的文件结束标识符时，该函数返回一个非零值，否则返回零。)
 // 牢记：在文件读取过程中，不能用feof函数的返回值直接用来判断文件的是否结束。
 // 而是应用于当文件读取结束的时候，判断是读取失败结束，还是遇到文件尾结束。
 // 1. 文本文件读取是否结束，判断返回值是否为
@@ -10,63 +10,59 @@
 // 例如：
 // fread判断返回值是否小于实际要读的个数。
 
+// // 正确的使用：
+// // 文本文件的例子：
+// #include <stdio.h>
+// #include <stdlib.h>
+// int main(void)
+// {
+//     int c; // 注意：int，非char，要求处理EOF
+//     FILE* fp = fopen("test.txt", "r");
+//     if(!fp) 
+//     {
+//         perror("File opening failed");
+//         return EXIT_FAILURE;
+//     }
+//     //fgetc 当读取失败的时候或者遇到文件结束的时候，都会返回EOF
+//     while ((c = fgetc(fp)) != EOF) // 标准C I/O读取文件循环
+//     { 
+//         putchar(c);
+//     }
+//     //判断是什么原因结束的
+//     if (ferror(fp))//如果ferror返回的是真，说明是读取的时候遇到了错误
+//         puts("I/O error when reading");
+//     else if (feof(fp))
+//         puts("End of file reached successfully");
+//     fclose(fp);
+// }
+
+// 二进制文件的例子：
 
 #include <stdio.h>
-#include <string.h>
-#include <ctype.h>
-
-int main() {
-    char input[101];
-    fgets(input, sizeof(input), stdin); // 读取输入字符串
-
-    // 去掉换行符
-    input[strcspn(input, "\n")] = '\0';
-
-    // 分割表达式和结果
-    char *expression = strtok(input, "=");
-    char *resultStr = strtok(NULL, "=");
-
-    if (expression == NULL || resultStr == NULL) {
-        printf("Invalid input format\n");
-        return 1;
+enum { SIZE = 5 };
+int main(void)
+{
+    double a[SIZE] = {1.,2.,3.,4.,5.};
+    FILE *fp = fopen("test.bin", "wb"); // 必须用二进制模式
+    fwrite(a, sizeof *a, SIZE, fp); // 写 double 的数组
+    fclose(fp);
+    double b[SIZE];
+    fp = fopen("test.bin","rb");
+    size_t ret_code = fread(b, sizeof *b, SIZE, fp); // 读 double 的数组
+    if(ret_code == SIZE) 
+    {
+        puts("Array read successfully, contents: ");
+        for(int n = 0; n < SIZE; ++n) printf("%f ", b[n]);
+        putchar('\n');
     }
-
-    // 将结果部分转换为整数
-    float expectedResult = atoi(resultStr);
-
-    // 计算表达式的值
-    float result = 0;
-    float num = 0;
-    char op = '+';
-    for (int i = 0; expression[i] != '\0'; i++) {
-        if (isdigit(expression[i])) {
-            num = num * 10 + (expression[i] - '0'); // 处理多位数
-        } else if (expression[i] == '+' || expression[i] == '-' || expression[i] == '*' || expression[i] == '/') {
-            // 根据上一个运算符计算结果
-            if (op == '+') result += num;
-            else if (op == '-') result -= num;
-            else if (op == '*') result *= num;
-            else if (op == '/') result /= num;
-
-            // 更新运算符和重置数字
-            op = expression[i];
-            num = 0;
+    else 
+    { // error handling
+        if (feof(fp))
+        printf("Error reading test.bin: unexpected end of file\n");
+        else if (ferror(fp)) 
+        {
+            perror("Error reading test.bin");
         }
     }
-
-    // 处理最后一个数字
-    if (op == '+') result += num;
-    else if (op == '-') result -= num;
-    else if (op == '*') result *= num;
-    else if (op == '/') result /= num;
-
-    // 验证结果
-    if (result == expectedResult) {
-        printf("Correct\n");
-    } else {
-        printf("Wrong\n");
-        printf("%.0f\n", result);
-    }
-
-    return 0;
+    fclose(fp);
 }
