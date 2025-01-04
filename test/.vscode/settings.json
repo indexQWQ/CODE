@@ -160,7 +160,9 @@
     "limits": "c",
     "sdl.h": "c",
     "unordered_map": "c",
-    "initializer_list": "c"
+    "initializer_list": "c",
+    "math.h": "c",
+    "allgame.h": "c"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,
