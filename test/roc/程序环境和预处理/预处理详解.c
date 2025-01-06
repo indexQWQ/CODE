@@ -162,3 +162,153 @@
 // 把宏名全部大写
 // 函数名不要全部大写
 
+// 3.3 #undef
+// 这条指令用于移除一个宏定义。
+// #undef NAME
+//  //如果现存的一个名字需要被重新定义，那么它的旧名字首先要被移除。
+
+
+// 3.4 命令行定义 
+// 许多C 的编译器提供了一种能力，允许在命令行中定义符号。用于启动编译过程。
+// 例如：当我们根据同一个源文件要编译出不同的一个程序的不同版本的时候，这个特性有点用处。（假
+// 定某个程序中声明了一个某个长度的数组，如果机器内存有限，我们需要一个很小的数组，但是另外一
+// 个机器内存大写，我们需要一个数组能够大写。）
+// #include <stdio.h>
+// int main()
+// {
+//     int array [ARRAY_SIZE];
+//     int i = 0;
+//     for(i = 0; i< ARRAY_SIZE; i ++)
+//     {
+//         array[i] = i;
+//     }
+//     for(i = 0; i< ARRAY_SIZE; i ++)
+//     {
+//         printf("%d " ,array[i]);
+//     }
+//     printf("\n" );
+//     return 0;
+// }
+// 编译指令：
+// gcc -D ARRAY_SIZE=10 programe.c
+
+
+//  3.5 条件编译 
+// 在编译一个程序的时候我们如果要将一条语句（一组语句）编译或者放弃是很方便的。因为我们有条件
+// 编译指令。
+// #include <stdio.h>
+// //#define __DEBUG__
+// int main()
+// {
+//     int i = 0;
+//     int arr[10] = {0};
+//     for(i=0; i<10; i++)
+//     {
+//         arr[i] = i;
+//         #ifdef __DEBUG__
+//         printf("%d\n", arr[i]);//为了观察数组是否赋值成功。      
+//         #endif //__DEBUG__
+//     }
+//     #if 1
+//     printf("hello\n");
+//     #endif
+//     #if 0
+//     printf("hello\n");
+//     #endif
+//     return 0;
+// }
+
+// 1.
+//  #if  
+// 常量表达式
+// //...
+//  #endif
+//  //常量表达式由预处理器求值。
+// 如：
+// #define __DEBUG__ 1
+//  #if __DEBUG__
+//  //..
+//  #endif
+
+//  2.多个分支的条件编译
+// #if 常量表达式
+// //...
+//  #elif 常量表达式
+// //...
+//  #else
+//  //...
+//  #endif
+
+//  3.判断是否被定义
+// #if defined(symbol)
+//  #ifdef symbol
+//  #if !defined(symbol)
+//  #ifndef symbol
+
+//  4.嵌套指令
+//  #if defined(OS_UNIX)
+//      #ifdef OPTION1
+//          unix_version_option1();
+//      #endif
+//      #ifdef OPTION2
+//          unix_version_option2();
+//      #endif
+//  #elif defined(OS_MSDOS)
+//      #ifdef OPTION2
+//          msdos_version_option2();
+//      #endif
+//  #endif
+
+
+// 3.6 文件包含 
+// 3.6.1 头文件被包含的方式：
+// 本地文件包含
+// #include "filename"
+// 查找策略：先在源文件所在目录下查找，如果该头文件未找到，编译器就像查找库函数头文件一样在标
+// 准位置查找头文件。
+// 如果找不到就提示编译错误。
+// Linux环境的标准头文件的路径：
+// /usr/include
+// VS环境的标准头文件的路径：
+// C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include
+// 库文件包含
+// #include <filename.h>
+// 查找头文件直接去标准路径下去查找，如果找不到就提示编译错误。
+// 这样是不是可以说，对于库文件也可以使用“”的形式包含？
+// 答案是肯定的，可以。
+// 但是这样做查找的效率就低些，当然这样也不容易区分是库文件还是本地文件了。
+
+// 3.6.2 嵌套文件包含
+// 我们已经知道，
+// #include 指令可以使另外一个文件被编译。就像它实际出现于
+// 一样。
+// 这种替换的方式很简单：
+// 预处理器先删除这条指令，并用包含文件的内容替换。
+// 这样一个源文件被包含10次，那就实际被编译10次。
+
+// 如何解决这个问题？
+// 答案：条件编译。
+// 每个头文件的开头写：
+// #ifndef __TEST_H__
+//  #define __TEST_H__
+//  //头文件的内容
+// #endif   
+// //__TEST_H__
+// 或者：
+// #pragma once
+
+
+// 1. 头文件中的 ifndef/define/endif是干什么用的?
+// 2. #include <filename.h> 和 #include "filename.h"有什么区别? 
+// #include <filename.h>
+// <>查找策略：是直接取库目录下查找
+// #include "filename.h"
+// ""查找策略：
+// 1.先去代码所在的路径下查找
+// 2.如果上面找不到，再去库下查找
+
+
+
+
+
+
