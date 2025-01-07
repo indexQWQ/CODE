@@ -311,4 +311,14 @@
 
 
 
-
+int main()
+{
+    int x = 8;
+for( ; x > 0 ; x-- ) {
+    if(x % 3) {
+        printf("%d,", x);
+        x = x - 1;
+        continue;
+    }
+}
+}
