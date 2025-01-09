@@ -166,7 +166,8 @@
     "*.tcc": "c",
     "memory": "c",
     "optional": "c",
-    "streambuf": "c"
+    "streambuf": "c",
+    "stddef.h": "c"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,
