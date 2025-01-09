@@ -162,7 +162,11 @@
     "unordered_map": "c",
     "initializer_list": "c",
     "math.h": "c",
-    "allgame.h": "c"
+    "allgame.h": "c",
+    "*.tcc": "c",
+    "memory": "c",
+    "optional": "c",
+    "streambuf": "c"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,
