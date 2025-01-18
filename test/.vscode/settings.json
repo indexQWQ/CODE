@@ -167,7 +167,9 @@
     "memory": "c",
     "optional": "c",
     "streambuf": "c",
-    "stddef.h": "c"
+    "stddef.h": "c",
+    "iostream": "cpp",
+    "iomanip": "cpp"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,
