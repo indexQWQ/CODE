@@ -8,7 +8,7 @@ int main()
     {
         for(int j=1;j<=i;j++)
         {
-            cout<<i<<'*'<<j<<"="<<i*j<<' ';
+            cout<<i<<'*'<<j<<"="<<i*j<<'\t';
         }
         cout<<endl;
     }
