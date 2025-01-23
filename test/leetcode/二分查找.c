@@ -24,8 +24,8 @@ int search(int* nums, int numsSize, int target)
 }
 int main()
 {
-    int nums[]={5};
-    int numsSize=1;
-    int target=5;
+    int nums[10]={1,2,3,4,5,6,7,8,9,10};
+    int numsSize=10;
+    int target=2;
     printf("%d\n",search(nums,numsSize,target));
 }
