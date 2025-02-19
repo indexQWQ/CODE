@@ -186,7 +186,8 @@
     "iosfwd": "cpp",
     "new": "cpp",
     "stdexcept": "cpp",
-    "contact.h": "c"
+    "contact.h": "c",
+    "cerrno": "c"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,
