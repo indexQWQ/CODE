@@ -185,7 +185,8 @@
     "system_error": "cpp",
     "iosfwd": "cpp",
     "new": "cpp",
-    "stdexcept": "cpp"
+    "stdexcept": "cpp",
+    "contact.h": "c"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,

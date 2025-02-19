@@ -2,17 +2,21 @@
 #include <string>
 using namespace std;
 
-//结构体数组
-//1.定义结构体
-//2.创建结构体数组
-struct stu
+struct stu 
 {
     string name;
     int age;
     int score;
 };
+
+struct teach
+{
+    string name;
+    int id;
+    struct stu s;
+};
 int main()
 {
-    stu arr[3];
+    
     return 0;
 }
