@@ -187,7 +187,8 @@
     "new": "cpp",
     "stdexcept": "cpp",
     "contact.h": "c",
-    "cerrno": "c"
+    "cerrno": "c",
+    "cinttypes": "cpp"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,
