@@ -44,19 +44,19 @@ struct ListNode* swapPairs(struct ListNode* head) {
 }
 
 //虚拟头节点
-struct ListNode* swapPairs(struct ListNode* head) {
-    struct ListNode* dummyhead=(struct ListNode*)malloc(sizeof(struct ListNode));
-    struct ListNode* cur=dummyhead;
-    dummyhead->next=head;
-    while(cur->next!=NULL && cur->next->next!=NULL)
-    {
-        struct ListNode*temp1=cur->next->next->next;
-        struct ListNode*temp2=cur->next->next;
-        struct ListNode*temp3=cur->next;
-        cur->next=temp2;
-        cur->next->next=temp3;
-        cur->next->next->next=temp1;
-        cur=cur->next->next;
-    }
-    return dummyhead->next;
-}
+// struct ListNode* swapPairs(struct ListNode* head) {
+//     struct ListNode* dummyhead=(struct ListNode*)malloc(sizeof(struct ListNode));
+//     struct ListNode* cur=dummyhead;
+//     dummyhead->next=head;
+//     while(cur->next!=NULL && cur->next->next!=NULL)
+//     {
+//         struct ListNode*temp1=cur->next->next->next;
+//         struct ListNode*temp2=cur->next->next;
+//         struct ListNode*temp3=cur->next;
+//         cur->next=temp2;
+//         cur->next->next=temp3;
+//         cur->next->next->next=temp1;
+//         cur=cur->next->next;
+//     }
+//     return dummyhead->next;
+// }
