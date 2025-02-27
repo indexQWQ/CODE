@@ -188,7 +188,8 @@
     "stdexcept": "cpp",
     "contact.h": "c",
     "cerrno": "c",
-    "cinttypes": "cpp"
+    "cinttypes": "cpp",
+    "unordered_set": "cpp"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,
