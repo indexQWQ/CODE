@@ -5,10 +5,10 @@ using namespace std;
 //只有非静态成员变量才属于类的对象上
 class person
 {
-    int m_a;//非静态成员变量 属于类的对象上
+    //int m_a;//非静态成员变量 属于类的对象上
     static int m_b;//静态成员变量 不属于类的对象上
     void fun(){}//非静态成员函数 不属于类的对象上
-    static void fun(){}//静态成员函数 不属于类的对象上
+    //static void fun(){}//静态成员函数 不属于类的对象上
 };
 int person::m_b=10;
 void test1()
