@@ -189,7 +189,9 @@
     "contact.h": "c",
     "cerrno": "c",
     "cinttypes": "cpp",
-    "unordered_set": "cpp"
+    "unordered_set": "cpp",
+    "functional": "cpp",
+    "iterator": "cpp"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,
