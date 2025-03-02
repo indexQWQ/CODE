@@ -14,12 +14,12 @@ public:
         for(int i=1;i<len;i++)
         {   
             int index=0;
-            while(strs[i][index]==ch[index])
+            while(strs[i][index]==ch[index] && index<strs[i].size() && index<ch.size())
             {
                 index++;
             }
             ch=ch.substr(0,index);
-            cout<<ch<<endl;
+            //cout<<ch<<endl;
         }
         return ch;
     }

@@ -59,6 +59,8 @@ public:
                     result.push_back({nums[i],nums[left],nums[right]});
                     while (right > left && nums[right] == nums[right - 1]) right--;
                     while (right > left && nums[left] == nums[left + 1]) left++;
+                    right--;
+                    left++;
                 }
             }
         }
