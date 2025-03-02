@@ -22,18 +22,18 @@ public:
         cout<<"animal构造"<<endl;
     }
     //利用虚析构可以解决父类指针释放子类时不干净的问题
-    // virtual ~animal()
-    // {
-    //     cout<<"animal虚析构"<<endl;
-    // }
+    virtual ~animal()
+    {
+        cout<<"animal虚析构"<<endl;
+    }
 
     //纯虚析构 需要声明也需要实现
-    virtual ~animal()=0;
+    //virtual ~animal()=0;
 };
-animal::~animal()
-{
-    cout<<"animal纯虚析构"<<endl;
-}
+// animal::~animal()
+// {
+//     cout<<"animal纯虚析构"<<endl;
+// }
 class cat:public animal
 {
 public:

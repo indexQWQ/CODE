@@ -16,7 +16,7 @@ public:
     //重载前置++
     myinterger& operator++()
     {
-        
+        this->m_num++;
         return *this;
     }
     //重载后置++
