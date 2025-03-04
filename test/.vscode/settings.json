@@ -192,7 +192,9 @@
     "unordered_set": "cpp",
     "functional": "cpp",
     "iterator": "cpp",
-    "error.h": "c"
+    "error.h": "c",
+    "numeric": "cpp",
+    "random": "cpp"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,

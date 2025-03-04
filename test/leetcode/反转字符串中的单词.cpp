@@ -3,39 +3,66 @@
 #include <algorithm>
 using namespace std;
 
+// class Solution {
+// public:
+//     string reverseWords(string s) {
+//         reverse(s.begin(),s.end());
+//         int odds=0;
+//         int index=s.find(' ',odds);
+//         while(index!=-1)
+//         {
+//             reverse(s.begin()+odds,s.begin()+index);
+//             odds=index+1;
+//             index=s.find(' ',odds);
+//         }
+//         reverse(s.begin()+odds,s.end());
+//         int len=s.size();
+//         for(int i=0;i<len-1;i++)
+//         {
+//             if(s[i]==' '&&s[i+1]==' '){
+//                 s.erase(i,1);
+//                 i--;
+//                 len--;
+//             }
+//         }
+//         if(s[0]==' ')
+//         s.erase(0,1);
+//         len=s.size()-1;
+//         if(s[len]==' ')
+//         s.erase(len,1);
+//         return s;
+//     }
+// };
+// int main()
+// {
+//     string s="a good   example";
+//     cout<<"\""<<Solution().reverseWords(s)<<"\""<<endl;
+//     return 0;
+// }
+
+//指针练习
 class Solution {
 public:
     string reverseWords(string s) {
-        reverse(s.begin(),s.end());
-        int odds=0;
-        int index=s.find(' ',odds);
-        while(index!=-1)
+        int slow=0;
+        for(int fast=0;fast<(int)s.size();fast++)
         {
-            reverse(s.begin()+odds,s.begin()+index);
-            odds=index+1;
-            index=s.find(' ',odds);
-        }
-        reverse(s.begin()+odds,s.end());
-        int len=s.size();
-        for(int i=0;i<len-1;i++)
-        {
-            if(s[i]==' '&&s[i+1]==' '){
-                s.erase(i,1);
-                i--;
-                len--;
+            if(s[fast]!=' ')
+            {
+                if(slow!=0)s[slow++]=' ';
+                while(fast<(int)s.size() && s[fast]!=' ')
+                {
+                    s[slow++]=s[fast++];
+                }
             }
         }
-        if(s[0]==' ')
-        s.erase(0,1);
-        len=s.size()-1;
-        if(s[len]==' ')
-        s.erase(len,1);
+        reverse(s.begin(),s.end());
         return s;
     }
 };
 int main()
 {
-    string s="a good   example";
+    string s="a good   example   ";
     cout<<"\""<<Solution().reverseWords(s)<<"\""<<endl;
     return 0;
 }
