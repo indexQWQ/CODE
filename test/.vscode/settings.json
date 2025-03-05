@@ -195,7 +195,8 @@
     "error.h": "c",
     "numeric": "cpp",
     "random": "cpp",
-    "list": "cpp"
+    "list": "cpp",
+    "set": "cpp"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,
