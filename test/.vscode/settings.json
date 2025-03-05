@@ -194,7 +194,8 @@
     "iterator": "cpp",
     "error.h": "c",
     "numeric": "cpp",
-    "random": "cpp"
+    "random": "cpp",
+    "list": "cpp"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,
