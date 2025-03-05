@@ -196,7 +196,8 @@
     "numeric": "cpp",
     "random": "cpp",
     "list": "cpp",
-    "set": "cpp"
+    "set": "cpp",
+    "queue": "cpp"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,

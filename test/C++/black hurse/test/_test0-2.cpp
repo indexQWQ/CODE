@@ -41,7 +41,7 @@ void initbook(struct inform *p)
 {
     p->count=0;
     ifstream ifs;
-    ifs.open("C:\\Users\\Lenovo\\OneDrive\\desktop\\555.txt",ios::in);
+    ifs.open("C:\\Users\\c24b24\\Desktop\\555.txt",ios::in);
     if(!ifs.is_open())
     {
         cout<<"打开失败"<<endl;
@@ -120,7 +120,7 @@ void keepbook(struct inform *p)
 {
     ofstream ofs;
 
-    ofs.open("C:\\Users\\Lenovo\\OneDrive\\desktop\\555.txt",ios::out);
+    ofs.open("C:\\Users\\c24b24\\Desktop\\555.txt",ios::out);
     if(!ofs.is_open())
     {
         cout<<"打开失败"<<endl;
