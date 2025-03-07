@@ -198,7 +198,8 @@
     "list": "cpp",
     "set": "cpp",
     "queue": "cpp",
-    "stack": "cpp"
+    "stack": "cpp",
+    "map": "cpp"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,
