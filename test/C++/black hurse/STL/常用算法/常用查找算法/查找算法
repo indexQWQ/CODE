@@ -1,0 +1,6 @@
+find//查找无素
+find if//按条件查找元素
+adjacent_find//直找相邻重复元素
+binary search月二分查找法
+count//统计元素个数
+count_if//按条件统计元素个数
