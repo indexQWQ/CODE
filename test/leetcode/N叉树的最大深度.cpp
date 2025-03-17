@@ -43,14 +43,16 @@ class Solution {
 public:
     int gethigh(Node *root){
         if(!root)return 0;
-        int max_=0;
-        for(int i=0;i<root->val;i++){
+        if(root->children.empty())return 1;
+        vector<int> max_;
+        for(int i=0;i<root->children.size();i++){
             int temp=gethigh(root->children[i]);
-            max_=max(max_,temp);
+            max_.push_back(temp);
         }
-        return 1+max_;
+        sort(max_.begin(),max_.end());
+        return 1+max_.back();
     }
     int maxDepth(Node* root) {
-        
+        return gethigh(root);
     }
 };
