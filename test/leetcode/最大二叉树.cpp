@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stack>
 #include <queue>
+#include <vector>
 #include <unordered_map>
 #include <algorithm>
 using namespace std;
@@ -23,23 +24,27 @@ using namespace std;
       TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
   };
-
 class Solution {
 public:
-    void sumpath(TreeNode* root,vector<int>& all,int sum){
-        if(!root)return ;
-        if(root->left)sumpath(root->left,all,sum+root->val);
-        if(root->right)sumpath(root->right,all,sum+root->val);
-        if(!root->left && !root->right){
-            sum+=root->val;
-            all.push_back(sum);
+    TreeNode* traveral(vector<int>& nums){
+        if(nums.size()==0)return nullptr;
+        int index=0,max=0;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]>max){
+                max=nums[i];
+                index=i;
+            }
         }
+        TreeNode* result=new TreeNode(max);
+        if(nums.size()==1)return result;
+        vector<int> leftnum(nums.begin(),nums.begin()+index);
+        vector<int> rightnum(nums.begin()+index+1,nums.end());
+        result->left=traveral(leftnum);
+        result->right=traveral(rightnum);
+        return result;
     }
-    bool hasPathSum(TreeNode* root, int targetSum) {
-        if(!root)return false;
-        vector<int> all;
-        sumpath(root,all,0);
-        if(find(all.begin(),all.end(),targetSum)!=all.end())return true;
-        return false;
+    TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
+        if(nums.empty())return nullptr;
+        return traveral(nums);
     }
 };
