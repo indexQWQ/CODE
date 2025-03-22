@@ -22,7 +22,7 @@ struct TreeNode {
       TreeNode() : val(0), left(nullptr), right(nullptr) {}
       TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
       TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-  };
+};
 
 // class Solution {
 // public:
@@ -62,5 +62,40 @@ public:
             if(sum[i]>=sum[i+1]) return false;
         }
         return true;
+    }
+};
+
+//不用创建数组
+class Solution {
+public:
+    long long maxval=LONG_MIN;;
+    bool isValidBST(TreeNode* root) {
+        if(!root )return true;
+
+        bool left=isValidBST(root->left);
+        if(root->val>maxval){
+            maxval=root->val;
+        }else{
+            return false;
+        }
+        bool right=isValidBST(root->right);
+        return left&&right;
+    }
+};
+//双指针优化
+class Solution {
+public:
+    TreeNode* target=nullptr;
+    bool isValidBST(TreeNode* root) {
+        
+        if(!root )return true;
+
+        bool left=isValidBST(root->left);
+        if(target && target->val>=root->val){
+            return false;
+        }
+        target=root;
+        bool right=isValidBST(root->right);
+        return left&&right;
     }
 };

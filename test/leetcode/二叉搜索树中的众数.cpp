@@ -22,24 +22,32 @@ struct TreeNode {
       TreeNode() : val(0), left(nullptr), right(nullptr) {}
       TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
       TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-  };
+};
 
 class Solution {
 public:
-    void gettree(TreeNode* root,vector<int>& arr){
-        if(!root) return ;
-        if(root->left)gettree(root->left,arr);
-        arr.push_back(root->val);
-        if(root->right)gettree(root->right,arr);
-    }
-    int getMinimumDifference(TreeNode* root) {
-        if(!root)return 0;
-        vector<int> arr;
-        gettree(root,arr);
-        int max=arr[1]-arr[0];
-        for(int i=0;i<arr.size()-1;i++){
-            if(arr[i+1]-arr[i]<max)max=arr[i+1]-arr[i];
+    int count=1;
+    int max=0;
+    TreeNode* former=nullptr;
+    vector<int> result;
+    void ismode(TreeNode* root){
+        if(!root)return ;
+        if(root->left)ismode(root->left);
+        if(!former)count=1;
+        else if(former->val==root->val)count++;
+        else count=1;
+        former=root;
+        if(count==max)result.push_back(root->val);
+        if(count>max){
+            max=count;
+            result.clear();
+            result.push_back(root->val);
         }
-        return max;
+        if(root->right)ismode(root->right);
+    }
+    vector<int> findMode(TreeNode* root) {
+        if(!root)return result;
+        ismode(root);
+        return result;
     }
 };
