@@ -26,26 +26,16 @@ struct TreeNode {
 
 class Solution {
 public:
+    TreeNode* build(vector<int>& nums,int left,int right){
+        if(left>right)return nullptr;
+        int mid=left+(right-left)/2;
+        TreeNode* root=new TreeNode(nums[mid]);
+        root->left=build(nums,left,mid-1);
+        root->right=build(nums,mid+1,right);
+        return root;
+    }
     TreeNode* sortedArrayToBST(vector<int>& nums) {
         if(nums.empty())return nullptr;
-        int left,right;
-        TreeNode* root=nullptr,*ll,*rr;
-        root=new TreeNode(nums[nums.size()/2]);
-        left=nums.size()/2-1;
-        right=nums.size()/2+1;
-        ll=rr=root;
-        while(left>=0 || right<nums.size()){
-            if(left>=0){
-                ll->left=new TreeNode(nums[left]);
-                ll=ll->left;
-            }
-            if(right<nums.size()){
-                rr->right=new TreeNode(nums[right]);
-                rr=rr->right;
-            }
-            left--;
-            right++;        
-        }
-        return root;
+        return build(nums,0,nums.size()-1);
     }
 };
