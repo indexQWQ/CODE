@@ -7,6 +7,6 @@ int maximumPoints(int** edges, int edgesSize, int* edgesColSize, int* coins, int
 }
 int main()
 {
-
+    
     return 0;
 }

@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<int>> result;
+    vector<int> path;
+    void backtracking(vector<int> nums,int index){
+        
+        result.push_back(path);
+        for(int i=index;i<nums.size();i++){
+            if(i>=1&&nums[i]==nums[i-1])
+                continue;;
+            path.push_back(nums[i]);
+            backtracking({nums.begin()+i,nums.end()},i+1);
+            path.pop_back();
+        }
+    }
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        if(!nums.size())return result;
+        backtracking(nums,0);
+        return result;
+    }
+};

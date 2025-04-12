@@ -199,7 +199,8 @@
     "set": "cpp",
     "queue": "cpp",
     "stack": "cpp",
-    "map": "cpp"
+    "map": "cpp",
+    "子集ii,cpp": "cpp"
 },
 "C_Cpp.errorSquiggles": "enabled",
 "problems.showCurrentInStatus": true,
